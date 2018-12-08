@@ -1,4 +1,4 @@
-package com.Pokemon;
+package com.Pokemon.Legendario;
 
 public class Pokedex {
 

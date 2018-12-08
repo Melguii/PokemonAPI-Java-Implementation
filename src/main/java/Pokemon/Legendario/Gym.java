@@ -1,4 +1,6 @@
-package com.Pokemon;
+package com.Pokemon.Legendario;
+
+import com.Pokemon.Location;
 
 public class Gym {
 
