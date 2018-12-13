@@ -1,9 +1,9 @@
-package com.Pokemon;
+package Pokemon;
 
 import java.util.Scanner;
 
 public class Menu {
-    int opcio;
+    private int opcio;
 
     public void menu (){
         do {

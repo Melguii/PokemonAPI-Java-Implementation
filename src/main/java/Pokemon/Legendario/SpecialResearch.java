@@ -1,4 +1,4 @@
-package com.Pokemon.Legendario;
+package Pokemon.Legendario;
 
 import com.Pokemon.Quest;
 

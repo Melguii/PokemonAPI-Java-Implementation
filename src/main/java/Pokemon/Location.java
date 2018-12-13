@@ -1,4 +1,4 @@
-package com.Pokemon;
+package Pokemon;
 
 public class Location {
 
