@@ -50,6 +50,7 @@ public class Menu {
         switch (opcio){
             case 1:
                 //Monedas
+                comprarMonedas();
 
                 break;
 
