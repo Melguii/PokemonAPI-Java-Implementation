@@ -1,4 +1,7 @@
-package Pokemon.Legendario;
+package Pokemon;
+
+import Pokemon.Legendario.Gym;
+import Pokemon.Mistico.SpecialResearch;
 
 public class Pokedex {
 
@@ -7,27 +10,6 @@ public class Pokedex {
     private Gym gym;
     private SpecialResearch specialResearch;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public Pokedex() {
-    }
-
-    /**
-     *
-     * @param id
-     * @param specialResearch
-     * @param gym
-     * @param kind
-     */
-    public Pokedex(Integer id, String kind, Gym gym, SpecialResearch specialResearch) {
-        super();
-        this.id = id;
-        this.kind = kind;
-        this.gym = gym;
-        this.specialResearch = specialResearch;
-    }
 
     public Integer getId() {
         return id;

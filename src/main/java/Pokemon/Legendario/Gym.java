@@ -1,7 +1,5 @@
 package Pokemon.Legendario;
 
-import Pokemon.Location;
-
 public class Gym {
 
     private String name;

@@ -1,6 +1,6 @@
-package Pokemon.Legendario;
+package Pokemon.Mistico;
 
-import com.Pokemon.Quest;
+import Pokemon.Mistico.Quest;
 
 import java.util.ArrayList;
 import java.util.List;

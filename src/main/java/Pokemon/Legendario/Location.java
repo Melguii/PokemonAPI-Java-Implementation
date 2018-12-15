@@ -1,4 +1,4 @@
-package Pokemon;
+package Pokemon.Legendario;
 
 public class Location {
 
