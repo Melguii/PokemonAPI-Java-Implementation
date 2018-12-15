@@ -3,31 +3,30 @@ package Jugador;
 public class Pokeball {
 
     private String name;
-    private Integer captureRate;
-    private Integer price;
-
-    public String getName() {
-        return name;
-    }
+    private int capture_rate;
+    private int price;
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Integer getCaptureRate() {
-        return captureRate;
+    public void setCapture_rate(int capture_rate) {
+        this.capture_rate = capture_rate;
     }
 
-    public void setCaptureRate(Integer captureRate) {
-        this.captureRate = captureRate;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getCapture_rate() {
+        return capture_rate;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 }

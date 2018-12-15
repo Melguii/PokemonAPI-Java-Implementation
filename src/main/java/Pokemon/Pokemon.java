@@ -1,10 +1,9 @@
 package Pokemon;
 
-public class Pokedex {
+public  abstract class Pokemon {
 
     private Integer id;
     private String name;
-    private Integer captureRate;
 
     public Integer getId() {
         return id;
@@ -21,13 +20,4 @@ public class Pokedex {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Integer getCaptureRate() {
-        return captureRate;
-    }
-
-    public void setCaptureRate(Integer captureRate) {
-        this.captureRate = captureRate;
-    }
-
 }
