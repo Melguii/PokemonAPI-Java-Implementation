@@ -16,7 +16,7 @@ public class Menu {
             opcio = opcioRequest();
             seleccionarOpcio(opcio);
 
-        }while (opcio != 10);
+        } while (opcio != 10);
     }
 
     /**

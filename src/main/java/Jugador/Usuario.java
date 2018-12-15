@@ -1,4 +1,4 @@
-package Pokemon;
+package Jugador;
 
 import java.util.Scanner;
 
@@ -19,12 +19,20 @@ public class Usuario {
         char confirmar;
 
         //Pedimos al usuario cuantas monedas quiere comprar
-        System.out.println("Quantes monedes vol comprar?");
-        Scanner scMonedas = new Scanner (System.in);
-        monedas = scMonedas.nextInt();
+        do {
+
+            System.out.println("Quantes monedes vol comprar?");
+            Scanner scMonedas = new Scanner (System.in);
+            monedas = scMonedas.nextInt();
+
+            //Si el usuario mete un valor negadtivo, volvemos a pedir una nueva cantidad
+            if (monedas < 0){
+                System.out.println("Cal introduir un nombre estrictament positiu.");
+            }
+
+        } while (monedas < 0);
 
         //Controlamos en cual de los intervarlos esta el valor de las monedas y mostramos su precio
-        //al usuario
         if (monedas < 250){
             precio = monedas * 0.01;
 
@@ -43,17 +51,19 @@ public class Usuario {
         }
 
         //Mostramos precio de las monedas en euros y le pedimos al usuario que confirme su compra
-        System.out.println("El preu total és de" + precio + "€. Confirma la compra? (Y/N)");
-        Scanner scConfirmar = new Scanner (System.in);
-        confirmar = scConfirmar.next().charAt(0);
+        do {
 
-        //En caso de introcir datos no correctos volvemos a pedirlo hasta que el usuario
-        //introduzca una opción válida
-        while (confirmar != 'Y' || confirmar != 'y' || confirmar != 'N' || confirmar != 'n'){
-            System.out.println("Error, opció no correcte. Confirma la compra? (Y/N)");
-            Scanner scReconfirmar = new Scanner (System.in);
-            confirmar = scReconfirmar.next().charAt(0);
-        }
+            System.out.println("El preu total és de" + precio + "€. Confirma la compra? (Y/N)");
+            Scanner scConfirmar = new Scanner (System.in);
+            confirmar = scConfirmar.next().charAt(0);
+
+            //En caso de introducir datos no correctos volvemos a pedirlos hasta que el usuario
+            //introduzca una opción correcta
+            if (confirmar != 'Y' || confirmar != 'y' || confirmar != 'N' || confirmar != 'n'){
+                System.out.println("Error, opció no correcte. Confirma la compra? (Y/N)");
+            }
+
+        } while (confirmar != 'Y' || confirmar != 'y' || confirmar != 'N' || confirmar != 'n');
 
         if (confirmar == 'Y' || confirmar == 'y') {
             System.out.println("S'han afegit" + monedas + "monedes al seu compte");
