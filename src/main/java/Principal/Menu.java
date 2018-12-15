@@ -2,10 +2,10 @@ package Principal;
 
 import java.util.Scanner;
 
-import Pokemon.Usuario;
+import Jugador.Usuario;
 
 public class Menu {
-    private int opcio;
+    private int opcion;
 
     /**
      * Funcion que controla es sistema de menu, sitema de opciones y opcion de salida
@@ -13,10 +13,10 @@ public class Menu {
     public void menu (){
         do {
             mostrarMenu();
-            opcio = opcioRequest();
-            seleccionarOpcio(opcio);
+            opcion = opcionRequest();
+            seleccionarOpcio(opcion);
 
-        } while (opcio != 10);
+        } while (opcion != 10);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Menu {
      * Funcion que pide al usuario introducir una opcion
      * @return sc.nextInt(): La opcion escrita por el usuario
      */
-    private int opcioRequest(){
+    private int opcionRequest(){
         System.out.println("Introdueix opcio: ");
         Scanner sc = new Scanner (System.in);
         return sc.nextInt();
@@ -46,10 +46,10 @@ public class Menu {
 
     /**
      * Esta funcion ejectua la opcion que quiera el usuario del menu
-     * @param opcio Consta del parametro con el valor del menu que quier el usuario
+     * @param opcion Consta del parametro con el valor del menu que quier el usuario
      */
-    private void seleccionarOpcio(int opcio) {
-        switch (opcio){
+    private void seleccionarOpcio(int opcion) {
+        switch (opcion){
             case 1:
                 //Monedas
                 Usuario u = new Usuario();
