@@ -1,6 +1,6 @@
-package com.Pokemon;
+package Jugador;
 
-public class Ball {
+public class Pokeball {
 
     private String name;
     private Integer captureRate;

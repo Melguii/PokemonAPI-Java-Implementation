@@ -1,6 +1,6 @@
-import Pokemon.Ball;
-import Pokemon.Menu;
-import Pokemon.Legend;
+package Principal;
+
+import Jugador.Pokeball;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -16,6 +16,7 @@ public class Main {
         Legend[] legends = gson.fromJson(new FileReader("files/balls.json"),Ball[].class);
 
         //Construimos y llamamos al menu
+        Pokeball[] pokePokeball = gson.fromJson(new FileReader("files/balls.json"), Pokeball[].class);
         Menu m = new Menu();
         m.menu();
     }

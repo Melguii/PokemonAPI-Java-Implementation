@@ -1,6 +1,4 @@
-package com.Pokemon.Legendario;
-
-import com.Pokemon.Quest;
+package Pokemon.Especial.Mistico;
 
 import java.util.ArrayList;
 import java.util.List;

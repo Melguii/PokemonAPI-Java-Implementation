@@ -1,9 +1,9 @@
-package Pokemon;
+package Principal;
 
 import java.util.Scanner;
 
 public class Menu {
-    int opcio;
+    private int opcio;
 
     /**
      * Funcion que controla es sistema de menu, sitema de opciones y opcion de salida
@@ -105,7 +105,6 @@ public class Menu {
                 break;
 
             default:
-
                 System.out.println("Error, opcio no correcte");
 
                 break;
