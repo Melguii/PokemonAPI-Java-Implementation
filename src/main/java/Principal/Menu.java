@@ -2,6 +2,8 @@ package Principal;
 
 import java.util.Scanner;
 
+import Pokemon.Usuario;
+
 public class Menu {
     private int opcio;
 
@@ -50,8 +52,8 @@ public class Menu {
         switch (opcio){
             case 1:
                 //Monedas
-                comprarMonedas();
-
+                Usuario u = new Usuario();
+                u.comprarMonedas();
                 break;
 
             case 2:
