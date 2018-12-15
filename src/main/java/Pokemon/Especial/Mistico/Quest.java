@@ -1,4 +1,4 @@
-package Pokemon.Mistico;
+package Pokemon.Especial.Mistico;
 
 public class Quest {
 

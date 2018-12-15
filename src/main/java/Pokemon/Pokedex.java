@@ -1,15 +1,10 @@
 package Pokemon;
 
-import Pokemon.Legendario.Gym;
-import Pokemon.Mistico.SpecialResearch;
-
 public class Pokedex {
 
     private Integer id;
-    private String kind;
-    private Gym gym;
-    private SpecialResearch specialResearch;
-
+    private String name;
+    private Integer captureRate;
 
     public Integer getId() {
         return id;
@@ -19,28 +14,20 @@ public class Pokedex {
         this.id = id;
     }
 
-    public String getKind() {
-        return kind;
+    public String getName() {
+        return name;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Gym getGym() {
-        return gym;
+    public Integer getCaptureRate() {
+        return captureRate;
     }
 
-    public void setGym(Gym gym) {
-        this.gym = gym;
-    }
-
-    public SpecialResearch getSpecialResearch() {
-        return specialResearch;
-    }
-
-    public void setSpecialResearch(SpecialResearch specialResearch) {
-        this.specialResearch = specialResearch;
+    public void setCaptureRate(Integer captureRate) {
+        this.captureRate = captureRate;
     }
 
 }

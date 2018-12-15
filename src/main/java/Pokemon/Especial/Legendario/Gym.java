@@ -1,4 +1,4 @@
-package Pokemon.Legendario;
+package Pokemon.Especial.Legendario;
 
 public class Gym {
 

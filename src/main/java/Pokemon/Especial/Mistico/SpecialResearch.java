@@ -1,6 +1,4 @@
-package Pokemon.Mistico;
-
-import Pokemon.Mistico.Quest;
+package Pokemon.Especial.Mistico;
 
 import java.util.ArrayList;
 import java.util.List;
