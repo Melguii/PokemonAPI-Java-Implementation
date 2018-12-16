@@ -2,22 +2,22 @@ package Pokemon.Especial.Legendario;
 
 public class Location {
 
-    private Double longitude;
-    private Double latitude;
+    private float longitude;
+    private float latitude;
 
-    public Double getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 
-    public Double getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 

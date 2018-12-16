@@ -2,22 +2,22 @@ package Pokemon.Especial.Mistico;
 
 public class Quest {
 
-    private Integer target;
-    private Integer quantity;
+    private int target;
+    private int quantity;
 
-    public Integer getTarget() {
+    public int getTarget() {
         return target;
     }
 
-    public void setTarget(Integer target) {
+    public void setTarget(int target) {
         this.target = target;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

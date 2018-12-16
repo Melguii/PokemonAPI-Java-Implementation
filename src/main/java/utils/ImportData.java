@@ -11,37 +11,26 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DataManager {
+public class ImportData {
     private static final String PATH = "files/";
     private static final String FILE1 = "balls.json";
     private static final String FILE2 = "poke.json";
     private static final String FILE3 = "legends.json";
     private static final String separator = System.lineSeparator();
 
-    //INFORMATION THAT WE READ
 
-    private Pokeball[] pokeballs;
-    private ArrayList<Pokemon> pokemons;
-
-
-
-    public void loadData(){
+    public Pokeball[] loadDataPokeballs(){
         Gson gson = new Gson();
         JsonReader reader;
-        Pokemon[] pokemonsAux;
+        Pokeball[] pokeballs;
         try {
             reader = new JsonReader(new FileReader(PATH + FILE1));
             pokeballs = gson.fromJson(reader, Pokeball[].class);
         }catch (FileNotFoundException e) {
+            pokeballs = null;
             e.printStackTrace();
         }
-        pokemonsAux = loadPokemon(FILE2);
-        this.pokemons = new ArrayList<Pokemon>(Arrays.asList(pokemonsAux));
-        pokemonsAux = loadPokemon(FILE3);
-        //Recorrer y ver los que son iguales :) y ya estaria
-        int n = this.pokemons.size();
-        int w = pokemonsAux.length;
-        this.pokemons.addAll(Arrays.asList(pokemonsAux));
+        return pokeballs;
     }
 
     private Pokemon[] loadPokemon(String file){
@@ -58,9 +47,20 @@ public class DataManager {
         return pokemons;
     }
 
-    public void print() {
-        for (Pokemon i: pokemons) {
-            System.out.println(i);
+    public ArrayList<Pokemon> loadDataPokedex() {
+        Pokemon[] pokemonsAux = loadPokemon(FILE2);
+        ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>(Arrays.asList(pokemonsAux));
+        pokemonsAux = loadPokemon(FILE3);
+        int i = 0;
+        for (Pokemon pokemonActual : pokedex) {
+            for (Pokemon pokemonAuxActual : pokemonsAux) {
+                if (pokemonActual.getId() == pokemonAuxActual.getId()){
+                    pokemonAuxActual.setName(pokemonActual.getName());
+                    pokedex.set(i,pokemonAuxActual);
+                }
+            }
+            i++;
         }
+        return pokedex;
     }
 }

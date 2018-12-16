@@ -2,7 +2,6 @@ package Principal;
 
 import java.util.Scanner;
 
-import Jugador.Usuario;
 
 public class Menu {
     private int opcion;
