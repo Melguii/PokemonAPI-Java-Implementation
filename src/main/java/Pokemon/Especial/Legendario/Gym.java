@@ -1,6 +1,13 @@
 package Pokemon.Especial.Legendario;
 
 public class Gym {
+    @Override
+    public String toString() {
+        return "Gym{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                '}';
+    }
 
     private String name;
     private Location location;

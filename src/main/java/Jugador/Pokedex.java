@@ -1,6 +1,8 @@
 package Jugador;
 
-import Pokemon.Pokemon;
+import Pokemon.*;
+import Pokemon.Especial.Legendario.Legendario;
+import Pokemon.Especial.Mistico.Mitico;
 
 import java.util.ArrayList;
 
@@ -18,7 +20,26 @@ public class Pokedex {
 
     public void printPokedex(){
         for (Pokemon i : pokedex) {
-            System.out.println(i);
+            if(i.getClass() == Salvaje.class){
+                Salvaje j = (Salvaje)i;
+                System.out.println(j.getId());
+                System.out.println(j.getName());
+                System.out.println(j.getCapture_rate());
+            }
+            if (i.getClass() == Legendario.class){
+                Legendario j = (Legendario)i;
+                System.out.println(j.getId());
+                System.out.println(j.getName());
+                System.out.println(j.getCapture_rate());
+                System.out.println(j.getGym());
+            }
+            if (i.getClass() == Mitico.class){
+                Mitico j = (Mitico)i;
+                System.out.println(j.getId());
+                System.out.println(j.getName());
+                System.out.println(j.getCapture_rate());
+                System.out.println(j.getSpecial_Research());
+            }
         }
     }
 

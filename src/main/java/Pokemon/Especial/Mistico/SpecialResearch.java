@@ -6,6 +6,15 @@ import java.util.List;
 public class SpecialResearch {
 
     private String name;
+
+    @Override
+    public String toString() {
+        return "SpecialResearch{" +
+                "name='" + name + '\'' +
+                ", quests=" + quests +
+                '}';
+    }
+
     private List<Quest> quests;
 
     public SpecialResearch() {

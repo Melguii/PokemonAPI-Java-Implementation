@@ -56,6 +56,7 @@ public class ImportData {
             for (Pokemon pokemonAuxActual : pokemonsAux) {
                 if (pokemonActual.getId() == pokemonAuxActual.getId()){
                     pokemonAuxActual.setName(pokemonActual.getName());
+                    pokemonAuxActual.setCapture_rate(pokemonActual.getCapture_rate());
                     pokedex.set(i,pokemonAuxActual);
                 }
             }

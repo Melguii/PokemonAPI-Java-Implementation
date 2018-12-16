@@ -1,5 +1,1470 @@
 [
 {
+    "id": 1,
+    "name":"bulbasaur",
+    "capture_rate": 45
+},
+{
+    "id": 2,
+    "name":"ivysaur",
+    "capture_rate": 45
+},
+{
+    "id": 3,
+    "name":"venusaur",
+    "capture_rate": 45
+},
+{
+    "id": 4,
+    "name":"charmander",
+    "capture_rate": 45
+},
+{
+    "id": 5,
+    "name":"charmeleon",
+    "capture_rate": 45
+},
+{
+    "id": 6,
+    "name":"charizard",
+    "capture_rate": 45
+},
+{
+    "id": 7,
+    "name":"squirtle",
+    "capture_rate": 45
+},
+{
+    "id": 8,
+    "name":"wartortle",
+    "capture_rate": 45
+},
+{
+    "id": 9,
+    "name":"blastoise",
+    "capture_rate": 45
+},
+{
+    "id": 10,
+    "name":"caterpie",
+    "capture_rate": 255
+},
+{
+    "id": 11,
+    "name":"metapod",
+    "capture_rate": 120
+},
+{
+    "id": 12,
+    "name":"butterfree",
+    "capture_rate": 45
+},
+{
+    "id": 13,
+    "name":"weedle",
+    "capture_rate": 255
+},
+{
+    "id": 14,
+    "name":"kakuna",
+    "capture_rate": 120
+},
+{
+    "id": 15,
+    "name":"beedrill",
+    "capture_rate": 45
+},
+{
+    "id": 16,
+    "name":"pidgey",
+    "capture_rate": 255
+},
+{
+    "id": 17,
+    "name":"pidgeotto",
+    "capture_rate": 120
+},
+{
+    "id": 18,
+    "name":"pidgeot",
+    "capture_rate": 45
+},
+{
+    "id": 19,
+    "name":"rattata",
+    "capture_rate": 255
+},
+{
+    "id": 20,
+    "name":"raticate",
+    "capture_rate": 127
+},
+{
+    "id": 21,
+    "name":"spearow",
+    "capture_rate": 255
+},
+{
+    "id": 22,
+    "name":"fearow",
+    "capture_rate": 90
+},
+{
+    "id": 23,
+    "name":"ekans",
+    "capture_rate": 255
+},
+{
+    "id": 24,
+    "name":"arbok",
+    "capture_rate": 90
+},
+{
+    "id": 25,
+    "name":"pikachu",
+    "capture_rate": 190
+},
+{
+    "id": 26,
+    "name":"raichu",
+    "capture_rate": 75
+},
+{
+    "id": 27,
+    "name":"sandshrew",
+    "capture_rate": 255
+},
+{
+    "id": 28,
+    "name":"sandslash",
+    "capture_rate": 90
+},
+{
+    "id": 29,
+    "name":"nidoran-f",
+    "capture_rate": 235
+},
+{
+    "id": 30,
+    "name":"nidorina",
+    "capture_rate": 120
+},
+{
+    "id": 31,
+    "name":"nidoqueen",
+    "capture_rate": 45
+},
+{
+    "id": 32,
+    "name":"nidoran-m",
+    "capture_rate": 235
+},
+{
+    "id": 33,
+    "name":"nidorino",
+    "capture_rate": 120
+},
+{
+    "id": 34,
+    "name":"nidoking",
+    "capture_rate": 45
+},
+{
+    "id": 35,
+    "name":"clefairy",
+    "capture_rate": 150
+},
+{
+    "id": 36,
+    "name":"clefable",
+    "capture_rate": 25
+},
+{
+    "id": 37,
+    "name":"vulpix",
+    "capture_rate": 190
+},
+{
+    "id": 38,
+    "name":"ninetales",
+    "capture_rate": 75
+},
+{
+    "id": 39,
+    "name":"jigglypuff",
+    "capture_rate": 170
+},
+{
+    "id": 40,
+    "name":"wigglytuff",
+    "capture_rate": 50
+},
+{
+    "id": 41,
+    "name":"zubat",
+    "capture_rate": 255
+},
+{
+    "id": 42,
+    "name":"golbat",
+    "capture_rate": 90
+},
+{
+    "id": 43,
+    "name":"oddish",
+    "capture_rate": 255
+},
+{
+    "id": 44,
+    "name":"gloom",
+    "capture_rate": 120
+},
+{
+    "id": 45,
+    "name":"vileplume",
+    "capture_rate": 45
+},
+{
+    "id": 46,
+    "name":"paras",
+    "capture_rate": 190
+},
+{
+    "id": 47,
+    "name":"parasect",
+    "capture_rate": 75
+},
+{
+    "id": 48,
+    "name":"venonat",
+    "capture_rate": 190
+},
+{
+    "id": 49,
+    "name":"venomoth",
+    "capture_rate": 75
+},
+{
+    "id": 50,
+    "name":"diglett",
+    "capture_rate": 255
+},
+{
+    "id": 51,
+    "name":"dugtrio",
+    "capture_rate": 50
+},
+{
+    "id": 52,
+    "name":"meowth",
+    "capture_rate": 255
+},
+{
+    "id": 53,
+    "name":"persian",
+    "capture_rate": 90
+},
+{
+    "id": 54,
+    "name":"psyduck",
+    "capture_rate": 190
+},
+{
+    "id": 55,
+    "name":"golduck",
+    "capture_rate": 75
+},
+{
+    "id": 56,
+    "name":"mankey",
+    "capture_rate": 190
+},
+{
+    "id": 57,
+    "name":"primeape",
+    "capture_rate": 75
+},
+{
+    "id": 58,
+    "name":"growlithe",
+    "capture_rate": 190
+},
+{
+    "id": 59,
+    "name":"arcanine",
+    "capture_rate": 75
+},
+{
+    "id": 60,
+    "name":"poliwag",
+    "capture_rate": 255
+},
+{
+    "id": 61,
+    "name":"poliwhirl",
+    "capture_rate": 120
+},
+{
+    "id": 62,
+    "name":"poliwrath",
+    "capture_rate": 45
+},
+{
+    "id": 63,
+    "name":"abra",
+    "capture_rate": 200
+},
+{
+    "id": 64,
+    "name":"kadabra",
+    "capture_rate": 100
+},
+{
+    "id": 65,
+    "name":"alakazam",
+    "capture_rate": 50
+},
+{
+    "id": 66,
+    "name":"machop",
+    "capture_rate": 180
+},
+{
+    "id": 67,
+    "name":"machoke",
+    "capture_rate": 90
+},
+{
+    "id": 68,
+    "name":"machamp",
+    "capture_rate": 45
+},
+{
+    "id": 69,
+    "name":"bellsprout",
+    "capture_rate": 255
+},
+{
+    "id": 70,
+    "name":"weepinbell",
+    "capture_rate": 120
+},
+{
+    "id": 71,
+    "name":"victreebel",
+    "capture_rate": 45
+},
+{
+    "id": 72,
+    "name":"tentacool",
+    "capture_rate": 190
+},
+{
+    "id": 73,
+    "name":"tentacruel",
+    "capture_rate": 60
+},
+{
+    "id": 74,
+    "name":"geodude",
+    "capture_rate": 255
+},
+{
+    "id": 75,
+    "name":"graveler",
+    "capture_rate": 120
+},
+{
+    "id": 76,
+    "name":"golem",
+    "capture_rate": 45
+},
+{
+    "id": 77,
+    "name":"ponyta",
+    "capture_rate": 190
+},
+{
+    "id": 78,
+    "name":"rapidash",
+    "capture_rate": 60
+},
+{
+    "id": 79,
+    "name":"slowpoke",
+    "capture_rate": 190
+},
+{
+    "id": 80,
+    "name":"slowbro",
+    "capture_rate": 75
+},
+{
+    "id": 81,
+    "name":"magnemite",
+    "capture_rate": 190
+},
+{
+    "id": 82,
+    "name":"magneton",
+    "capture_rate": 60
+},
+{
+    "id": 83,
+    "name":"farfetchd",
+    "capture_rate": 45
+},
+{
+    "id": 84,
+    "name":"doduo",
+    "capture_rate": 190
+},
+{
+    "id": 85,
+    "name":"dodrio",
+    "capture_rate": 45
+},
+{
+    "id": 86,
+    "name":"seel",
+    "capture_rate": 190
+},
+{
+    "id": 87,
+    "name":"dewgong",
+    "capture_rate": 75
+},
+{
+    "id": 88,
+    "name":"grimer",
+    "capture_rate": 190
+},
+{
+    "id": 89,
+    "name":"muk",
+    "capture_rate": 75
+},
+{
+    "id": 90,
+    "name":"shellder",
+    "capture_rate": 190
+},
+{
+    "id": 91,
+    "name":"cloyster",
+    "capture_rate": 60
+},
+{
+    "id": 92,
+    "name":"gastly",
+    "capture_rate": 190
+},
+{
+    "id": 93,
+    "name":"haunter",
+    "capture_rate": 90
+},
+{
+    "id": 94,
+    "name":"gengar",
+    "capture_rate": 45
+},
+{
+    "id": 95,
+    "name":"onix",
+    "capture_rate": 45
+},
+{
+    "id": 96,
+    "name":"drowzee",
+    "capture_rate": 190
+},
+{
+    "id": 97,
+    "name":"hypno",
+    "capture_rate": 75
+},
+{
+    "id": 98,
+    "name":"krabby",
+    "capture_rate": 225
+},
+{
+    "id": 99,
+    "name":"kingler",
+    "capture_rate": 60
+},
+{
+    "id": 100,
+    "name":"voltorb",
+    "capture_rate": 190
+},
+{
+    "id": 101,
+    "name":"electrode",
+    "capture_rate": 60
+},
+{
+    "id": 102,
+    "name":"exeggcute",
+    "capture_rate": 90
+},
+{
+    "id": 103,
+    "name":"exeggutor",
+    "capture_rate": 45
+},
+{
+    "id": 104,
+    "name":"cubone",
+    "capture_rate": 190
+},
+{
+    "id": 105,
+    "name":"marowak",
+    "capture_rate": 75
+},
+{
+    "id": 106,
+    "name":"hitmonlee",
+    "capture_rate": 45
+},
+{
+    "id": 107,
+    "name":"hitmonchan",
+    "capture_rate": 45
+},
+{
+    "id": 108,
+    "name":"lickitung",
+    "capture_rate": 45
+},
+{
+    "id": 109,
+    "name":"koffing",
+    "capture_rate": 190
+},
+{
+    "id": 110,
+    "name":"weezing",
+    "capture_rate": 60
+},
+{
+    "id": 111,
+    "name":"rhyhorn",
+    "capture_rate": 120
+},
+{
+    "id": 112,
+    "name":"rhydon",
+    "capture_rate": 60
+},
+{
+    "id": 113,
+    "name":"chansey",
+    "capture_rate": 30
+},
+{
+    "id": 114,
+    "name":"tangela",
+    "capture_rate": 45
+},
+{
+    "id": 115,
+    "name":"kangaskhan",
+    "capture_rate": 45
+},
+{
+    "id": 116,
+    "name":"horsea",
+    "capture_rate": 225
+},
+{
+    "id": 117,
+    "name":"seadra",
+    "capture_rate": 75
+},
+{
+    "id": 118,
+    "name":"goldeen",
+    "capture_rate": 225
+},
+{
+    "id": 119,
+    "name":"seaking",
+    "capture_rate": 60
+},
+{
+    "id": 120,
+    "name":"staryu",
+    "capture_rate": 225
+},
+{
+    "id": 121,
+    "name":"starmie",
+    "capture_rate": 60
+},
+{
+    "id": 122,
+    "name":"mr-mime",
+    "capture_rate": 45
+},
+{
+    "id": 123,
+    "name":"scyther",
+    "capture_rate": 45
+},
+{
+    "id": 124,
+    "name":"jynx",
+    "capture_rate": 45
+},
+{
+    "id": 125,
+    "name":"electabuzz",
+    "capture_rate": 45
+},
+{
+    "id": 126,
+    "name":"magmar",
+    "capture_rate": 45
+},
+{
+    "id": 127,
+    "name":"pinsir",
+    "capture_rate": 45
+},
+{
+    "id": 128,
+    "name":"tauros",
+    "capture_rate": 45
+},
+{
+    "id": 129,
+    "name":"magikarp",
+    "capture_rate": 255
+},
+{
+    "id": 130,
+    "name":"gyarados",
+    "capture_rate": 45
+},
+{
+    "id": 131,
+    "name":"lapras",
+    "capture_rate": 45
+},
+{
+    "id": 132,
+    "name":"ditto",
+    "capture_rate": 35
+},
+{
+    "id": 133,
+    "name":"eevee",
+    "capture_rate": 45
+},
+{
+    "id": 134,
+    "name":"vaporeon",
+    "capture_rate": 45
+},
+{
+    "id": 135,
+    "name":"jolteon",
+    "capture_rate": 45
+},
+{
+    "id": 136,
+    "name":"flareon",
+    "capture_rate": 45
+},
+{
+    "id": 137,
+    "name":"porygon",
+    "capture_rate": 45
+},
+{
+    "id": 138,
+    "name":"omanyte",
+    "capture_rate": 45
+},
+{
+    "id": 139,
+    "name":"omastar",
+    "capture_rate": 45
+},
+{
+    "id": 140,
+    "name":"kabuto",
+    "capture_rate": 45
+},
+{
+    "id": 141,
+    "name":"kabutops",
+    "capture_rate": 45
+},
+{
+    "id": 142,
+    "name":"aerodactyl",
+    "capture_rate": 45
+},
+{
+    "id": 143,
+    "name":"snorlax",
+    "capture_rate": 25
+},
+{
+    "id": 144,
+    "name":"articuno",
+    "capture_rate": 3
+},
+{
+    "id": 145,
+    "name":"zapdos",
+    "capture_rate": 3
+},
+{
+    "id": 146,
+    "name":"moltres",
+    "capture_rate": 3
+},
+{
+    "id": 147,
+    "name":"dratini",
+    "capture_rate": 45
+},
+{
+    "id": 148,
+    "name":"dragonair",
+    "capture_rate": 45
+},
+{
+    "id": 149,
+    "name":"dragonite",
+    "capture_rate": 45
+},
+{
+    "id": 150,
+    "name":"mewtwo",
+    "capture_rate": 3
+},
+{
+    "id": 151,
+    "name":"mew",
+    "capture_rate": 45
+},
+{
+    "id": 152,
+    "name":"chikorita",
+    "capture_rate": 45
+},
+{
+    "id": 153,
+    "name":"bayleef",
+    "capture_rate": 45
+},
+{
+    "id": 154,
+    "name":"meganium",
+    "capture_rate": 45
+},
+{
+    "id": 155,
+    "name":"cyndaquil",
+    "capture_rate": 45
+},
+{
+    "id": 156,
+    "name":"quilava",
+    "capture_rate": 45
+},
+{
+    "id": 157,
+    "name":"typhlosion",
+    "capture_rate": 45
+},
+{
+    "id": 158,
+    "name":"totodile",
+    "capture_rate": 45
+},
+{
+    "id": 159,
+    "name":"croconaw",
+    "capture_rate": 45
+},
+{
+    "id": 160,
+    "name":"feraligatr",
+    "capture_rate": 45
+},
+{
+    "id": 161,
+    "name":"sentret",
+    "capture_rate": 255
+},
+{
+    "id": 162,
+    "name":"furret",
+    "capture_rate": 90
+},
+{
+    "id": 163,
+    "name":"hoothoot",
+    "capture_rate": 255
+},
+{
+    "id": 164,
+    "name":"noctowl",
+    "capture_rate": 90
+},
+{
+    "id": 165,
+    "name":"ledyba",
+    "capture_rate": 255
+},
+{
+    "id": 166,
+    "name":"ledian",
+    "capture_rate": 90
+},
+{
+    "id": 167,
+    "name":"spinarak",
+    "capture_rate": 255
+},
+{
+    "id": 168,
+    "name":"ariados",
+    "capture_rate": 90
+},
+{
+    "id": 169,
+    "name":"crobat",
+    "capture_rate": 90
+},
+{
+    "id": 170,
+    "name":"chinchou",
+    "capture_rate": 190
+},
+{
+    "id": 171,
+    "name":"lanturn",
+    "capture_rate": 75
+},
+{
+    "id": 172,
+    "name":"pichu",
+    "capture_rate": 190
+},
+{
+    "id": 173,
+    "name":"cleffa",
+    "capture_rate": 150
+},
+{
+    "id": 174,
+    "name":"igglybuff",
+    "capture_rate": 170
+},
+{
+    "id": 175,
+    "name":"togepi",
+    "capture_rate": 190
+},
+{
+    "id": 176,
+    "name":"togetic",
+    "capture_rate": 75
+},
+{
+    "id": 177,
+    "name":"natu",
+    "capture_rate": 190
+},
+{
+    "id": 178,
+    "name":"xatu",
+    "capture_rate": 75
+},
+{
+    "id": 179,
+    "name":"mareep",
+    "capture_rate": 235
+},
+{
+    "id": 180,
+    "name":"flaaffy",
+    "capture_rate": 120
+},
+{
+    "id": 181,
+    "name":"ampharos",
+    "capture_rate": 45
+},
+{
+    "id": 182,
+    "name":"bellossom",
+    "capture_rate": 45
+},
+{
+    "id": 183,
+    "name":"marill",
+    "capture_rate": 190
+},
+{
+    "id": 184,
+    "name":"azumarill",
+    "capture_rate": 75
+},
+{
+    "id": 185,
+    "name":"sudowoodo",
+    "capture_rate": 65
+},
+{
+    "id": 186,
+    "name":"politoed",
+    "capture_rate": 45
+},
+{
+    "id": 187,
+    "name":"hoppip",
+    "capture_rate": 255
+},
+{
+    "id": 188,
+    "name":"skiploom",
+    "capture_rate": 120
+},
+{
+    "id": 189,
+    "name":"jumpluff",
+    "capture_rate": 45
+},
+{
+    "id": 190,
+    "name":"aipom",
+    "capture_rate": 45
+},
+{
+    "id": 191,
+    "name":"sunkern",
+    "capture_rate": 235
+},
+{
+    "id": 192,
+    "name":"sunflora",
+    "capture_rate": 120
+},
+{
+    "id": 193,
+    "name":"yanma",
+    "capture_rate": 75
+},
+{
+    "id": 194,
+    "name":"wooper",
+    "capture_rate": 255
+},
+{
+    "id": 195,
+    "name":"quagsire",
+    "capture_rate": 90
+},
+{
+    "id": 196,
+    "name":"espeon",
+    "capture_rate": 45
+},
+{
+    "id": 197,
+    "name":"umbreon",
+    "capture_rate": 45
+},
+{
+    "id": 198,
+    "name":"murkrow",
+    "capture_rate": 30
+},
+{
+    "id": 199,
+    "name":"slowking",
+    "capture_rate": 70
+},
+{
+    "id": 200,
+    "name":"misdreavus",
+    "capture_rate": 45
+},
+{
+    "id": 201,
+    "name":"unown",
+    "capture_rate": 225
+},
+{
+    "id": 202,
+    "name":"wobbuffet",
+    "capture_rate": 45
+},
+{
+    "id": 203,
+    "name":"girafarig",
+    "capture_rate": 60
+},
+{
+    "id": 204,
+    "name":"pineco",
+    "capture_rate": 190
+},
+{
+    "id": 205,
+    "name":"forretress",
+    "capture_rate": 75
+},
+{
+    "id": 206,
+    "name":"dunsparce",
+    "capture_rate": 190
+},
+{
+    "id": 207,
+    "name":"gligar",
+    "capture_rate": 60
+},
+{
+    "id": 208,
+    "name":"steelix",
+    "capture_rate": 25
+},
+{
+    "id": 209,
+    "name":"snubbull",
+    "capture_rate": 190
+},
+{
+    "id": 210,
+    "name":"granbull",
+    "capture_rate": 75
+},
+{
+    "id": 211,
+    "name":"qwilfish",
+    "capture_rate": 45
+},
+{
+    "id": 212,
+    "name":"scizor",
+    "capture_rate": 25
+},
+{
+    "id": 213,
+    "name":"shuckle",
+    "capture_rate": 190
+},
+{
+    "id": 214,
+    "name":"heracross",
+    "capture_rate": 45
+},
+{
+    "id": 215,
+    "name":"sneasel",
+    "capture_rate": 60
+},
+{
+    "id": 216,
+    "name":"teddiursa",
+    "capture_rate": 120
+},
+{
+    "id": 217,
+    "name":"ursaring",
+    "capture_rate": 60
+},
+{
+    "id": 218,
+    "name":"slugma",
+    "capture_rate": 190
+},
+{
+    "id": 219,
+    "name":"magcargo",
+    "capture_rate": 75
+},
+{
+    "id": 220,
+    "name":"swinub",
+    "capture_rate": 225
+},
+{
+    "id": 221,
+    "name":"piloswine",
+    "capture_rate": 75
+},
+{
+    "id": 222,
+    "name":"corsola",
+    "capture_rate": 60
+},
+{
+    "id": 223,
+    "name":"remoraid",
+    "capture_rate": 190
+},
+{
+    "id": 224,
+    "name":"octillery",
+    "capture_rate": 75
+},
+{
+    "id": 225,
+    "name":"delibird",
+    "capture_rate": 45
+},
+{
+    "id": 226,
+    "name":"mantine",
+    "capture_rate": 25
+},
+{
+    "id": 227,
+    "name":"skarmory",
+    "capture_rate": 25
+},
+{
+    "id": 228,
+    "name":"houndour",
+    "capture_rate": 120
+},
+{
+    "id": 229,
+    "name":"houndoom",
+    "capture_rate": 45
+},
+{
+    "id": 230,
+    "name":"kingdra",
+    "capture_rate": 45
+},
+{
+    "id": 231,
+    "name":"phanpy",
+    "capture_rate": 120
+},
+{
+    "id": 232,
+    "name":"donphan",
+    "capture_rate": 60
+},
+{
+    "id": 233,
+    "name":"porygon2",
+    "capture_rate": 45
+},
+{
+    "id": 234,
+    "name":"stantler",
+    "capture_rate": 45
+},
+{
+    "id": 235,
+    "name":"smeargle",
+    "capture_rate": 45
+},
+{
+    "id": 236,
+    "name":"tyrogue",
+    "capture_rate": 75
+},
+{
+    "id": 237,
+    "name":"hitmontop",
+    "capture_rate": 45
+},
+{
+    "id": 238,
+    "name":"smoochum",
+    "capture_rate": 45
+},
+{
+    "id": 239,
+    "name":"elekid",
+    "capture_rate": 45
+},
+{
+    "id": 240,
+    "name":"magby",
+    "capture_rate": 45
+},
+{
+    "id": 241,
+    "name":"miltank",
+    "capture_rate": 45
+},
+{
+    "id": 242,
+    "name":"blissey",
+    "capture_rate": 30
+},
+{
+    "id": 243,
+    "name":"raikou",
+    "capture_rate": 3
+},
+{
+    "id": 244,
+    "name":"entei",
+    "capture_rate": 3
+},
+{
+    "id": 245,
+    "name":"suicune",
+    "capture_rate": 3
+},
+{
+    "id": 246,
+    "name":"larvitar",
+    "capture_rate": 45
+},
+{
+    "id": 247,
+    "name":"pupitar",
+    "capture_rate": 45
+},
+{
+    "id": 248,
+    "name":"tyranitar",
+    "capture_rate": 45
+},
+{
+    "id": 249,
+    "name":"lugia",
+    "capture_rate": 3
+},
+{
+    "id": 250,
+    "name":"ho-oh",
+    "capture_rate": 3
+},
+{
+    "id": 251,
+    "name":"celebi",
+    "capture_rate": 45
+},
+{
+    "id": 252,
+    "name":"treecko",
+    "capture_rate": 45
+},
+{
+    "id": 253,
+    "name":"grovyle",
+    "capture_rate": 45
+},
+{
+    "id": 254,
+    "name":"sceptile",
+    "capture_rate": 45
+},
+{
+    "id": 255,
+    "name":"torchic",
+    "capture_rate": 45
+},
+{
+    "id": 256,
+    "name":"combusken",
+    "capture_rate": 45
+},
+{
+    "id": 257,
+    "name":"blaziken",
+    "capture_rate": 45
+},
+{
+    "id": 258,
+    "name":"mudkip",
+    "capture_rate": 45
+},
+{
+    "id": 259,
+    "name":"marshtomp",
+    "capture_rate": 45
+},
+{
+    "id": 260,
+    "name":"swampert",
+    "capture_rate": 45
+},
+{
+    "id": 261,
+    "name":"poochyena",
+    "capture_rate": 255
+},
+{
+    "id": 262,
+    "name":"mightyena",
+    "capture_rate": 127
+},
+{
+    "id": 263,
+    "name":"zigzagoon",
+    "capture_rate": 255
+},
+{
+    "id": 264,
+    "name":"linoone",
+    "capture_rate": 90
+},
+{
+    "id": 265,
+    "name":"wurmple",
+    "capture_rate": 255
+},
+{
+    "id": 266,
+    "name":"silcoon",
+    "capture_rate": 120
+},
+{
+    "id": 267,
+    "name":"beautifly",
+    "capture_rate": 45
+},
+{
+    "id": 268,
+    "name":"cascoon",
+    "capture_rate": 120
+},
+{
+    "id": 269,
+    "name":"dustox",
+    "capture_rate": 45
+},
+{
+    "id": 270,
+    "name":"lotad",
+    "capture_rate": 255
+},
+{
+    "id": 271,
+    "name":"lombre",
+    "capture_rate": 120
+},
+{
+    "id": 272,
+    "name":"ludicolo",
+    "capture_rate": 45
+},
+{
+    "id": 273,
+    "name":"seedot",
+    "capture_rate": 255
+},
+{
+    "id": 274,
+    "name":"nuzleaf",
+    "capture_rate": 120
+},
+{
+    "id": 275,
+    "name":"shiftry",
+    "capture_rate": 45
+},
+{
+    "id": 276,
+    "name":"taillow",
+    "capture_rate": 200
+},
+{
+    "id": 277,
+    "name":"swellow",
+    "capture_rate": 45
+},
+{
+    "id": 278,
+    "name":"wingull",
+    "capture_rate": 190
+},
+{
+    "id": 279,
+    "name":"pelipper",
+    "capture_rate": 45
+},
+{
+    "id": 280,
+    "name":"ralts",
+    "capture_rate": 235
+},
+{
+    "id": 281,
+    "name":"kirlia",
+    "capture_rate": 120
+},
+{
+    "id": 282,
+    "name":"gardevoir",
+    "capture_rate": 45
+},
+{
+    "id": 283,
+    "name":"surskit",
+    "capture_rate": 200
+},
+{
+    "id": 284,
+    "name":"masquerain",
+    "capture_rate": 75
+},
+{
+    "id": 285,
+    "name":"shroomish",
+    "capture_rate": 255
+},
+{
+    "id": 286,
+    "name":"breloom",
+    "capture_rate": 90
+},
+{
+    "id": 287,
+    "name":"slakoth",
+    "capture_rate": 255
+},
+{
+    "id": 288,
+    "name":"vigoroth",
+    "capture_rate": 120
+},
+{
+    "id": 289,
+    "name":"slaking",
+    "capture_rate": 45
+},
+{
+    "id": 290,
+    "name":"nincada",
+    "capture_rate": 255
+},
+{
+    "id": 291,
+    "name":"ninjask",
+    "capture_rate": 120
+},
+{
+    "id": 292,
+    "name":"shedinja",
+    "capture_rate": 45
+},
+{
+    "id": 293,
+    "name":"whismur",
+    "capture_rate": 190
+},
+{
     "id": 294,
     "name":"loudred",
     "capture_rate": 120
