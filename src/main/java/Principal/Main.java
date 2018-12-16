@@ -1,22 +1,26 @@
 package Principal;
 
-import Jugador.Pokedex;
-import Jugador.Tienda;
-import utils.ImportData;
+import utils.DataManager;
 import java.io.FileNotFoundException;
 
 
 public class Main {
     public static void main (String[] args) throws FileNotFoundException {
-        //Usuario usuario = new Usuario();
-        ImportData dataManager = new ImportData();
-        Tienda tienda = new Tienda();
-        Pokedex pokedex = new Pokedex();
-        //Principal.Menu m = new Principal.Menu();
+        DataManager dataManager = new DataManager();
+        Menu m = new Menu();
+        dataManager.loadDataPokeballs();
+        dataManager.loadDataPokedex();
 
-        tienda.setPokeballs(dataManager.loadDataPokeballs());
-        pokedex.setPokedex(dataManager.loadDataPokedex());
-        pokedex.printPokedex();
+        do{
+            m.mostrarMenu();
+            do {
+                m.peticion();
+            }while (!m.opcionValida());
+
+            dataManager.seleccionarOpcio(m.getOpcion());
+
+        }while(!m.salir());
+
 
         //Construimos y llamamos al menu
         //Pokeball[] pokePokeball = gson.fromJson(new FileReader("files/balls.json"), Pokeball[].class);
