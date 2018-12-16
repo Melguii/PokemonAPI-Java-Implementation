@@ -58,29 +58,29 @@ public class Usuario {
 
         //Mostramos precio de las monedas en euros y le pedimos al usuario que confirme su compra
         do {
-            System.out.println("El preu total és de" + precio + "€. Confirma la compra? (Y/N)");
+            System.out.println("El preu total és de " + precio + "€. Confirma la compra? (Y/N)");
             Scanner scConfirmar = new Scanner(System.in);
             confirmar = scConfirmar.next().charAt(0);
 
             //En caso de introducir datos no correctos volvemos a pedirlos hasta que el usuario
             //introduzca una opción correcta
-            if (confirmar != 'Y' || confirmar != 'y' || confirmar != 'N' || confirmar != 'n') {
-                System.out.println("Error, opció no correcte. Confirma la compra? (Y/N)");
+            if (confirmar != 'Y' && confirmar != 'y' && confirmar != 'N' && confirmar != 'n') {
+                System.out.println("Error, opció no correcte.");
             }
 
-        } while (confirmar != 'Y' || confirmar != 'y' || confirmar != 'N' || confirmar != 'n');
+        } while (confirmar != 'Y' && confirmar != 'y' && confirmar != 'N' && confirmar != 'n');
 
         if (confirmar == 'Y' || confirmar == 'y') {
             this.monedas += monedas;
-            System.out.println("S'han afegit" + monedas + "monedes al seu compte");
+            System.out.println(this.monedas);
+            System.out.println("S'han afegit " + monedas + " monedes al seu compte");
 
-        } else if (confirmar == 'N' || confirmar == 'n') {
+        } else {
 
             System.out.println("Compra cancel·lada");
 
         }
     }
-}
 
     /**
      * Funcion llamada por el menu, donde el usuario accede al menu de comprar de Pokeballs
@@ -193,5 +193,6 @@ public class Usuario {
                 break;
         }
     }
+    */
 }
-*/
+
