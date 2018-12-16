@@ -7,17 +7,30 @@ import Jugador.Inventario;
 
 public class Usuario {
 
-    private int monedas = 1000;            //Empieza con 1000 monedas inciales
-    private Inventario inventario = new Inventario();
+    //Atributos de la clase
+    private int monedas;
+    private Inventario inventario;
 
 
+    //Constructor
+    public Usuario(Pokeball firstPokeball) {
+        this.monedas = 1000;
+        this.inventario = new Inventario(firstPokeball);
+    }
+
+    //Getters and Setters
+
+    /**
+     * Getter monenas
+     * @return monedas
+     */
     public int getMonedas() {
         return monedas;
     }
 
 
     /**
-     * Funcion llamada por el menu, donde el usuario pide al programa comprar monedas
+     * Funcion llamada por el menu, donde el usuario pide al programa comprar monedas (Revisar)
      */
     public void comprarMonedas() {
         int monedas;
@@ -81,12 +94,21 @@ public class Usuario {
         }
     }
 
+
+    /**
+     * El usuario pide un objeto
+     * @return char del objeto a seleccionar
+     */
     public char pideObjeto() {
         System.out.println("Esculli una opció:");
         Scanner sc = new Scanner(System.in);
-        return sc.next().charAt(0);
+        return Character.toUpperCase(sc.next().charAt(0));
     }
 
+    /**
+     * Insertar objetos al inventario
+     * @param pokeballs
+     */
     public void addItemsInventario(List<Pokeball> pokeballs) {
         if (pokeballs != null) {
             int price = pokeballs.size() * pokeballs.get(0).getPrice();
@@ -95,6 +117,7 @@ public class Usuario {
             } else {
                 this.monedas -= price;
                 inventario.addPokeballs(pokeballs);
+                System.out.println("S'han afegit " + pokeballs.size() + " Superballs al seu compte a canvi de "  + price + " monedes.");
             }
         }
     }

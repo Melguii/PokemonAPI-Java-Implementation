@@ -10,7 +10,7 @@ public class Main {
         Menu m = new Menu();
         dataManager.loadDataPokeballs();
         dataManager.loadDataPokedex();
-
+        dataManager.loadUser();
         do{
             m.mostrarMenu();
             do {
@@ -20,10 +20,5 @@ public class Main {
             dataManager.seleccionarOpcio(m.getOpcion());
 
         }while(!m.salir());
-
-
-        //Construimos y llamamos al menu
-        //Pokeball[] pokePokeball = gson.fromJson(new FileReader("files/balls.json"), Pokeball[].class);
-        //m.menu();
     }
 }

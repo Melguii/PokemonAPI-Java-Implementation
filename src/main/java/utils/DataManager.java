@@ -16,15 +16,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataManager {
+    //Constantes
     private static final String PATH = "files/";
     private static final String FILE1 = "balls.json";
     private static final String FILE2 = "poke.json";
     private static final String FILE3 = "legends.json";
     private static final String separator = System.lineSeparator();
 
+    //Atributos de la clase
     private Tienda tienda = new Tienda();
     private Pokedex pokedex = new Pokedex();
-    private Usuario usuario = new Usuario();
+    private Usuario usuario;
+
+    //Getters
 
     /**
      * Carga la infomacion del Json de pokebolls en la tienda
@@ -44,24 +48,12 @@ public class DataManager {
     }
 
     /**
-     * Lee la informacion de los pokemons
-     *
-     * @param file: El archivo a leer
-     * @return Array de pokemons
+     * Carga la informacion del usuario
      */
-    private Pokemon[] loadPokemon(String file) {
-        Pokemon[] pokemons;
-        JsonReader reader;
-        try {
-            Gson gson = new GsonBuilder().registerTypeAdapter(Pokemon.class, new IdDeserializer()).create();
-            reader = new JsonReader(new FileReader(PATH + file));
-            pokemons = gson.fromJson(reader, Pokemon[].class);
-        } catch (FileNotFoundException e) {
-            pokemons = null;
-            e.printStackTrace();
-        }
-        return pokemons;
+    public void loadUser() {
+        usuario = new Usuario(tienda.getFirstPokeball());
     }
+
 
     /**
      * Ahora cargamos la informacion de los todos los pokemons.
@@ -85,6 +77,33 @@ public class DataManager {
     }
 
 
+    //Metodos
+
+    /**
+     * Lee la informacion de los pokemons
+     *
+     * @param file: El archivo a leer
+     * @return Array de pokemons
+     */
+    private Pokemon[] loadPokemon(String file) {
+        Pokemon[] pokemons;
+        JsonReader reader;
+        try {
+            Gson gson = new GsonBuilder().registerTypeAdapter(Pokemon.class, new IdDeserializer()).create();
+            reader = new JsonReader(new FileReader(PATH + file));
+            pokemons = gson.fromJson(reader, Pokemon[].class);
+        } catch (FileNotFoundException e) {
+            pokemons = null;
+            e.printStackTrace();
+        }
+        return pokemons;
+    }
+
+
+    /**
+     * Maneja los datos
+     * @param opcion
+     */
     public void seleccionarOpcio(int opcion) {
         switch (opcion) {
             case 1:
@@ -93,8 +112,9 @@ public class DataManager {
                 break;
 
             case 2:
-                System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
+                //Comprar Objetos
 
+                System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
                 tienda.mostrarObjetos();
                 char eleccion = usuario.pideObjeto();
                 List<Pokeball> pokeball = tienda.getObjetos(eleccion);

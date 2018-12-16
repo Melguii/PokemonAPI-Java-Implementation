@@ -27,7 +27,7 @@ public class Tienda {
 
     public List<Pokeball> getObjetos(char eleccion) {
         List<Pokeball> pokeballs = new ArrayList<Pokeball>();
-        int index = eleccion - 'a';
+        int index = eleccion - 'A';
         if (index > this.pokeballs.length-1 || index < 0){
             return  null;
         }else{
@@ -43,5 +43,9 @@ public class Tienda {
                 return pokeballs;
             }
         }
+    }
+
+    public Pokeball getFirstPokeball() {
+        return pokeballs[0];
     }
 }

@@ -2,19 +2,12 @@ package Jugador;
 
 public class Pokeball {
 
-    @Override
-    public String toString() {
-        return "Pokeball{" +
-                "name='" + name + '\'' +
-                ", capture_rate=" + capture_rate +
-                ", price=" + price +
-                '}';
-    }
-
+    //Atributos de la clase
     private String name;
     private int capture_rate;
     private int price;
 
+    //Geters and setters
     public void setName(String name) {
         this.name = name;
     }
@@ -38,4 +31,5 @@ public class Pokeball {
     public int getPrice() {
         return price;
     }
+    
 }
