@@ -1,9 +1,16 @@
 package Pokemon;
 
 public  abstract class Pokemon {
-
-    private Integer id;
     private String name;
+    private Integer id;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -13,11 +20,5 @@ public  abstract class Pokemon {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }
