@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import Jugador.Inventario;
+import Pokemon.Especial.Legendario.Legendario;
+import Pokemon.Especial.Mistico.Mitico;
+import Pokemon.Pokemon;
+import utils.CheckType;
+import utils.SistemaCaptura;
 
 public class Usuario {
 
     //Atributos de la clase
     private int monedas;
     private Inventario inventario;
-
 
     //Constructor
     public Usuario(Pokeball firstPokeball) {
@@ -129,5 +133,38 @@ public class Usuario {
     public void consultarInventario(){
         inventario.consultarInventario();
     }
+
+    /**
+     * Pedimos al usuario que introduzca el pokemon que está buscando
+     * @return devuelve el ie o
+     */
+    public String peticionPokemon(){
+
+            System.out.println("Quin Pokémon vol buscar?");
+            Scanner sc = new Scanner(System.in);
+            return sc.next();
+
+    }
+
+    /**
+     * Funcion encargada de activar el sistema de captura de un pokemon
+     * @param pokemon
+     */
+    public void capturaPokemon(Pokemon pokemon, SistemaCaptura combate){
+
+    }
+
+    /**
+     * Comprovamos que le queden pokeballs al usuario
+     * @return si queden pokeballs disponibles
+     */
+    public boolean pokeballsDisponibles(){
+        if (inventario.getTotalPokeballs() == 0){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
 

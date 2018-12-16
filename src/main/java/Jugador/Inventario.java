@@ -22,6 +22,14 @@ public class Inventario {
     //Getters and setters
 
     /**
+     * Getter del total de pokeballs
+     * @return
+     */
+    public int getTotalPokeballs() {
+        return totalPokeballs;
+    }
+
+    /**
      * Obtiene la lista de Pokeballs
      * @return lista de Pokeballs
      */

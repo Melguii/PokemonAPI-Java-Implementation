@@ -78,6 +78,4 @@ public  abstract class Pokemon {
     public void setId(int id) {
         this.id = id;
     }
-
-
 }

@@ -1,9 +1,6 @@
 package utils;
 
-import Jugador.Pokeball;
-import Jugador.Pokedex;
-import Jugador.Tienda;
-import Jugador.Usuario;
+import Jugador.*;
 import Pokemon.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -124,13 +121,33 @@ public class DataManager {
                 break;
 
             case 3:
+
                 //Consultar Inventario
                 usuario.consultarInventario();
 
                 break;
 
             case 4:
-                System.out.println("Quin Pokémon vol buscar?");
+
+                //Capturar pokemons salvajes
+                boolean disponibilidad = usuario.pokeballsDisponibles();
+
+                if (disponibilidad){
+
+                    String parametro = usuario.peticionPokemon();
+                    SistemaCaptura sistemaCaptura = new SistemaCaptura();
+                    Pokemon pokemon = pokedex.buscarPokemonSalvaje(parametro);
+
+                    if (pokemon.getName() != null){
+                        usuario.
+                        SistemaCaptura captura = new SistemaCaptura();
+                        captura.sistemaCaptura(inventario, pokemon);
+                    }
+
+
+                } else {
+                    System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
+                }
 
 
                 break;
