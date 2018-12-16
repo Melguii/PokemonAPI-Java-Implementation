@@ -112,14 +112,22 @@ public class Usuario {
     public void addItemsInventario(List<Pokeball> pokeballs) {
         if (pokeballs != null) {
             int price = pokeballs.size() * pokeballs.get(0).getPrice();
+
             if (price > this.monedas) {
                 System.out.println("Ho sentim, però no disposa de suficients monedes.");
             } else {
                 this.monedas -= price;
                 inventario.addPokeballs(pokeballs);
-                System.out.println("S'han afegit " + pokeballs.size() + " Superballs al seu compte a canvi de "  + price + " monedes.");
+                System.out.println("S'han afegit " + pokeballs.size() + " " +  pokeballs.get(0).getName() + " al seu compte a canvi de "  + price + " monedes.\n");
             }
         }
+    }
+
+    /**
+     * Funcion que llama a la consulta del inventario
+     */
+    public void consultarInventario(){
+        inventario.consultarInventario();
     }
 }
 
