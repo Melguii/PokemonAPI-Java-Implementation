@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class DataManager {
     //Constantes
@@ -147,7 +148,7 @@ public class DataManager {
                 break;
 
             case 8:
-
+                
                 break;
 
             case 9:
