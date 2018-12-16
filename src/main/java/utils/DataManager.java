@@ -129,6 +129,7 @@ public class DataManager {
                 break;
 
             case 4:
+                System.out.println("Quin Pokémon vol buscar?");
 
                 break;
 

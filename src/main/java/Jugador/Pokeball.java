@@ -31,5 +31,5 @@ public class Pokeball {
     public int getPrice() {
         return price;
     }
-    
+
 }

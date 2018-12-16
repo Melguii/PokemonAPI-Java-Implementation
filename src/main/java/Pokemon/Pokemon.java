@@ -6,6 +6,12 @@ public  abstract class Pokemon {
     private String name;
     private int id;
     private int capture_rate;
+    private String front_default;
+    private String flavor_text;
+    private int weight;
+    private int height;
+    private int base_experience;
+
 
     public int getCapture_rate() {
         return capture_rate;
