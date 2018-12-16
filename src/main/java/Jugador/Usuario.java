@@ -5,7 +5,12 @@ import java.util.Scanner;
 import Jugador.Inventario;
 
 public class Usuario {
-    int monedas;            //Empieza con 1000 monedas inciales
+
+    public int getMonedas() {
+        return monedas;
+    }
+
+    private int monedas;            //Empieza con 1000 monedas inciales
 
     //Constructor Usuario
     public Usuario() {

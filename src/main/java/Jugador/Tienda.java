@@ -10,4 +10,14 @@ public class Tienda {
     public void setPokeballs(Pokeball[] pokeballs) {
         this.pokeballs = pokeballs;
     }
+
+    public void mostrarObjetos() {
+        char i = 'a';
+        System.out.println("Pokéballs disponibles:");
+
+        for (Pokeball pokeActual: pokeballs) {
+            System.out.println(i++ + ") " + pokeActual.getName() + ":\t" + pokeActual.getPrice() + " monedes");
+        }
+        System.out.println("\n"+i++ + ") " + "Sortir sense comprar\n");
+    }
 }

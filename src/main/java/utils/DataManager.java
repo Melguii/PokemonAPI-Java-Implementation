@@ -92,7 +92,9 @@ public class DataManager {
                 break;
 
             case 2:
-                //Comprar Objetos
+                System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
+
+                tienda.mostrarObjetos();
 
                 break;
 
