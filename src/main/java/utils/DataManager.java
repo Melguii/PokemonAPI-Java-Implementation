@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DataManager {
     private static final String PATH = "files/";
@@ -95,6 +96,10 @@ public class DataManager {
                 System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
 
                 tienda.mostrarObjetos();
+                char eleccion = usuario.pideObjeto();
+                List<Pokeball> pokeball = tienda.getObjetos(eleccion);
+                usuario.addItemsInventario(pokeball);
+
 
                 break;
 

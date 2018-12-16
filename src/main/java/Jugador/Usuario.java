@@ -1,21 +1,20 @@
 package Jugador;
 
+import java.util.List;
 import java.util.Scanner;
 
 import Jugador.Inventario;
 
 public class Usuario {
 
+    private int monedas = 1000;            //Empieza con 1000 monedas inciales
+    private Inventario inventario;
+
+
     public int getMonedas() {
         return monedas;
     }
 
-    private int monedas;            //Empieza con 1000 monedas inciales
-
-    //Constructor Usuario
-    public Usuario() {
-        monedas = 1000;
-    }
 
     /**
      * Funcion llamada por el menu, donde el usuario pide al programa comprar monedas
@@ -82,117 +81,22 @@ public class Usuario {
         }
     }
 
-    /**
-     * Funcion llamada por el menu, donde el usuario accede al menu de comprar de Pokeballs
-     */
-    /*
-    public void comprarObejectos(){
-        char opcion;
-        int unitats;
-        int preu;
-        String pokeball;
+    public char pideObjeto() {
+        System.out.println("Esculli una opció:");
+        Scanner sc = new Scanner(System.in);
+        return sc.next().charAt(0);
+    }
 
-        System.out.println("Teniu" + monedas + "monedes");
-
-        do {
-
-        }while ();
-
-        menuObjectos();
-
-        if (opcion != 'e'){
-            System.out.println("Quantes unitats en vol comprar?");
-            Scanner scUnitats = new Scanner (System.in);
-            unitats = scUnitats.next().charAt(0);
-
-            if (opcion == 'a'){
-                preu = 50*unitats;
-                pokeball = "Pokéball";
-
-            } else if (opcion == 'b'){
-                preu = 100*unitats;
-                pokeball = "Superball";
-
-            } else if (opcion == 'c'){
-                preu = 150*unitats;
-                pokeball = "Ultraball";
-
-            } else if (opcion == 'd'){
-                preu = 1000*unitats;
-                pokeball = "Masterball";
-
-            }
-
-            if (monedas >= preu){
-                //Actualizamos el total de monedas del usuario y le indicamos el resultado final de la compra
-                monedas -= preu;
-                System.out.println("S'han afegit" + unitats + pokeball + "al seu compte a canvi de "+ preu +"monedes.");
-
+    public void addItemsInventario(List<Pokeball> pokeballs) {
+        if (pokeballs != null) {
+            int price = pokeballs.size() * pokeballs.get(0).getPrice();
+            if (price > this.monedas) {
+                System.out.println("Ho sentim, però no disposa de suficients monedes.");
             } else {
-                System.out.println("Ho sentim, però no disposa de suficients monedes");
+                this.monedas -= price;
+                inventario.addPokeballs(pokeballs);
             }
-
-        } else {
-            System.out.println("Ha sortit sense comprar");
-
         }
     }
-
-    /**
-     * Funcion llamada por la funcion "comprarObjetos" que muestra los diferentes productos que se pueden comprar
-     */
-    /*
-    public void menuObjectos(){
-        System.out.println("Pokéballs disponibles:\n" +
-                "\ta) Pokéball: 50 monedes\n" +
-                "\tb) Superball: 100 monedes\n" +
-                "\tc) Ultraball: 150 monedes\n" +
-                "\td) Masterball: 1000 monedes\n +" +
-                "\te) Sortir sense comprar");
-    }
-
-    /**
-     * Funcion llamada por la funcion "comprarObjetos" que pide al usuario si quiere alguna pokeball en especifico
-     * os salir de la tienda
-     * @return opcion del menu
-     */
-    /*
-    public char pedirOpcion(){
-        char opcion;
-        System.out.println("Esculli una opció:\n");
-        Scanner scOpcion = new Scanner (System.in);
-        opcion = scOpcion.next().charAt(0);
-
-        return opcion;
-    }
-
-    /**
-     * Funcion con las diferentes pokeballs a escoger
-     * @param opcion
-     */
-    /*
-    public void seleccionarObjeto(char opcion){
-        switch (opcion){
-            case 'a':
-
-                break;
-            case 'b':
-
-                break;
-            case 'c':
-
-                break;
-            case 'd':
-
-                break;
-            case 'e':
-
-                break;
-            default:
-
-                break;
-        }
-    }
-    */
 }
 
