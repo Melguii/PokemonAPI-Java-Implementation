@@ -120,15 +120,16 @@ public class DataManager {
                 List<Pokeball> pokeball = tienda.getObjetos(eleccion);
                 usuario.addItemsInventario(pokeball);
 
-
                 break;
 
             case 3:
                 //Consultar Inventario
+                usuario.consultarInventario();
 
                 break;
 
             case 4:
+
 
                 break;
 
