@@ -96,14 +96,29 @@ public class Pokedex {
     }
 
     public Pokemon buscarPokemonPorNombre(String nombre){
-        nombre.toLowerCase();
+        nombre = nombre.toLowerCase();
 
         for (Pokemon pokemon : pokedex) {
-            if (pokemon.getName() == nombre){
+            if (pokemon.getName().equals(nombre)){
                 return pokemon;
             }
         }
 
         return null;
+    }
+
+    public Pokemon buscarPokemon(String idPokemon) {
+        int idBuscado;
+        CheckType ch = new CheckType();
+
+        boolean numeric = ch.checkType(idPokemon);
+
+        if (numeric){
+            idBuscado = Integer.parseInt(idPokemon);
+            return buscarPokemonPorId(idBuscado);
+
+        } else {
+            return buscarPokemonPorNombre(idPokemon);
+        }
     }
 }

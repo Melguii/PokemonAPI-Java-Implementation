@@ -142,8 +142,14 @@ public class Usuario {
 
             System.out.println("Quin Pokémon vol buscar?");
             Scanner sc = new Scanner(System.in);
-            return sc.next();
+            return sc.nextLine();
 
+    }
+
+    public String peticionInformacion(){
+        System.out.println("De quin Pokémon vol informació?");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
     }
 
     /**

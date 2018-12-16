@@ -6,8 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +18,6 @@ public class DataManager {
     private static final String FILE1 = "balls.json";
     private static final String FILE2 = "poke.json";
     private static final String FILE3 = "legends.json";
-    private static final String separator = System.lineSeparator();
 
     //Atributos de la clase
     private Tienda tienda = new Tienda();
@@ -128,7 +126,7 @@ public class DataManager {
                 break;
 
             case 4:
-
+/*
                 //Capturar pokemons salvajes
                 boolean disponibilidad = usuario.pokeballsDisponibles();
 
@@ -149,7 +147,7 @@ public class DataManager {
                     System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
                 }
 
-
+*/
                 break;
 
             case 5:
@@ -165,7 +163,17 @@ public class DataManager {
                 break;
 
             case 8:
-                
+                String idPokemon = usuario.peticionInformacion();
+                Pokemon pokemon = pokedex.buscarPokemon(idPokemon);
+                if(pokemon != null){
+                    PokeApi pokeApi = new PokeApi(pokemon.getId());
+                    setMoreInformactionOfPokemon(pokemon,pokeApi);
+                    try {
+                        WriteFileInformation(pokemon);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
 
             case 9:
@@ -190,6 +198,30 @@ public class DataManager {
                 break;
 
         }
+    }
+
+    private void WriteFileInformation(Pokemon pokemon) throws IOException {
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(pokemon.getName() + ".html"));
+        writer.write("<html>");
+        writer.write("<head>");
+        writer.write("<title>" + pokemon.getName() + "</title>");
+        writer.write("<head>");
+        writer.write("</html>");
+        writer.write("<body>");
+        writer.write("<h1>" + pokemon.getName() + "(" + pokemon.getId() + ")" + "</h1>");
+        writer.write("<img src=\"" + pokemon.getFront_default() + "\"style=\"width:500px;height:500px;\">");
+        writer.write("<p>" + pokemon.getFlavor_text() +"</p>");
+        writer.write("</body>");
+        writer.close();
+    }
+
+    private void setMoreInformactionOfPokemon(Pokemon pokemon, PokeApi pokeApi) {
+        pokemon.setHeight(pokeApi.getHeight());
+        pokemon.setWeight(pokeApi.getWeight());
+        pokemon.setFront_default(pokeApi.getDefaultSprite());
+        pokemon.setFlavor_text(pokeApi.getFlavorTextEnglish());
+        pokemon.setBase_experience(pokeApi.getBaseExperience());
     }
 
 }
