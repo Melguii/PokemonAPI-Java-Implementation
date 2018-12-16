@@ -12,7 +12,6 @@ public class Menu {
         opcion = -1;
     }
 
-
     /**
      * Funcion que contiene los mensajes del propio menu
      */
