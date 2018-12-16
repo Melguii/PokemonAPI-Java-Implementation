@@ -9,10 +9,6 @@ public class Inventario {
     int totalPokeballs;
     List<Pokeball> pokeballs = new ArrayList<Pokeball>();
 
-    public Inventario(){
-        //empezamos con 3 pokeballs
-
-    }
 
     public void listaPokeballs(){
 
@@ -22,8 +18,8 @@ public class Inventario {
         return pokeballs;
     }
 
-    public void setPokeballs( List<Pokeball> pokeballs){
-        this.pokeballs = pokeballs;
+    public void addPokeballs( List<Pokeball> pokeballs){
+        this.pokeballs.addAll(pokeballs);
     }
 
 

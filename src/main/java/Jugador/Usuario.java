@@ -8,7 +8,7 @@ import Jugador.Inventario;
 public class Usuario {
 
     private int monedas = 1000;            //Empieza con 1000 monedas inciales
-    private Inventario inventario;
+    private Inventario inventario = new Inventario();
 
 
     public int getMonedas() {

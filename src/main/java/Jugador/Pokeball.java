@@ -2,6 +2,15 @@ package Jugador;
 
 public class Pokeball {
 
+    @Override
+    public String toString() {
+        return "Pokeball{" +
+                "name='" + name + '\'' +
+                ", capture_rate=" + capture_rate +
+                ", price=" + price +
+                '}';
+    }
+
     private String name;
     private int capture_rate;
     private int price;
