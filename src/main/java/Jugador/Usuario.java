@@ -10,6 +10,7 @@ public class Usuario {
     //Atributos de la clase
     private int monedas;
     private Inventario inventario;
+    private Pc pc;
 
     //Constructor
     public Usuario(Pokeball firstPokeball) {
@@ -153,6 +154,8 @@ public class Usuario {
      * @param pokemon
      */
     public void pokemonCapturado(Pokemon pokemon){
+        System.out.println("El Pokémon Treecko ha estat capturat!");
+        pc.setPokemonToPc(pokemon);
 
     }
 
@@ -162,7 +165,7 @@ public class Usuario {
      */
     public boolean pokeballsDisponibles(){
         if (inventario.getTotalPokeballs() == 0){
-            System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
+            System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.\n");
             return false;
 
         } else {
@@ -192,9 +195,10 @@ public class Usuario {
      * @param tipoPokeball
      * @return: si contiene el tipo de pokeball que ha pedido usar
      */
-    public boolean existeEnInventario(String tipoPokeball){
+    public boolean existeEnInventario(String tipoPokeball, Pokeball[] pokeballsExistentes){
         List<Pokeball> pokeballs = inventario.getPokeballs();
 
+        //Si existe la pokeball en el inventario la devolvemos
         for (Pokeball pokeball : pokeballs) {
             if (tipoPokeball.equals(pokeball.getName())){
 
@@ -202,6 +206,17 @@ public class Usuario {
             }
         }
 
+        //Comprovamos si la pokeball existe para indicar que no le quedan de ese tipo de pokeball
+        for (Pokeball pokeball : pokeballsExistentes){
+            if (pokeball.getName().equals(tipoPokeball)){
+                System.out.println("Compte! No et queden pokeballs de tipus " + tipoPokeball +"intenta-ho de nou amb d'altres que tinguis a l'inventari");
+
+                //Devolvemos true porque realmente, si que le quedan pokeballs para capturar al pokemon
+                return true;
+            }
+        }
+
+        //Por último solo quiere decir que no existe la pokebal que nos pide el usuario dentro del propio juego
         System.out.println("Aquest tipus no existeix. Quin tipus de Pokéball vol fer servir?");
         return false;
     }

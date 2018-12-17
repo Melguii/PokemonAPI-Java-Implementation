@@ -167,17 +167,25 @@ public class DataManager {
                 break;
 
             case 8:
+
                 String idPokemon = usuario.peticionInformacion();
                 Pokemon pokemon = pokedex.buscarPokemon(idPokemon);
+
                 if(pokemon != null){
                     PokeApi pokeApi = new PokeApi(pokemon.getId());
                     setMoreInformactionOfPokemon(pokemon,pokeApi);
+
                     try {
+
                         WriteFileInformation(pokemon);
+
                     } catch (IOException e) {
+
                         e.printStackTrace();
+
                     }
                 }
+
                 break;
 
             case 9:
@@ -227,14 +235,15 @@ public class DataManager {
     }
 
     public boolean resultadoCaptura(Pokemon pokemon, int ecuacion){
-        double pc = 0;                 //Probabilidad de Captura
-        double pb;                     //Pokeball Capture Rate
-        double pm;                     //Pokemon Capture Rate
+        double pc = 0;                                              //Probabilidad de Captura
+        double pb;                                                  //Pokeball Capture Rate
+        double pm;                                                  //Pokemon Capture Rate
         boolean atrapado = false;
         boolean tieneTipoPokeball = true;
         int intents = 5;
         String tipoPokeball;
         double random;
+        Pokeball[] pokeballsExistentes = tienda.getPokeballs();     //Pokeballs que existen en el juego definidas en la tienda como posibles compras
 
         do{
             System.out.println("Queden "+ usuario.pokeballsTotales() + " Pokéballs i "+ intents +"/5 intents. Quin tipus de Pokéball vol fer servir?");
@@ -243,7 +252,7 @@ public class DataManager {
                 Scanner scPokeball = new Scanner(System.in);
                 tipoPokeball = scPokeball.nextLine();
                 tipoPokeball = tipoPokeball.toLowerCase();
-                tieneTipoPokeball = usuario.existeEnInventario(tipoPokeball);
+                tieneTipoPokeball = usuario.existeEnInventario(tipoPokeball, pokeballsExistentes);
 
             }while (!tieneTipoPokeball);
 

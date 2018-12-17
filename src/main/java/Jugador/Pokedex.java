@@ -70,19 +70,22 @@ public class Pokedex {
         }
 
         //Controlamos que no sea un pokemon legenadario ni mitico
-        if (pokemonBuscado.getClass() == Legendario.class){
+        try {
+            if (pokemonBuscado.getClass() == Legendario.class){
 
-            System.out.println("Ho sentim, però aquest Pokémon és Llegendari i no apareix salvatge.");
+                System.out.println("Ho sentim, però aquest Pokémon és Llegendari i no apareix salvatge.\n");
+                return null;
+
+            } else if (pokemonBuscado.getClass() == Mitico.class) {
+
+                System.out.println("Ho sentim, però aquest Pokémon és mític i no apareix salvatge.\n");
+                return null;
+            }
+
+        }catch (NullPointerException e){
+
+            System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).\n");
             return null;
-
-        } else if (pokemonBuscado.getClass() == Mitico.class) {
-
-            System.out.println("Ho sentim, però aquest Pokémon és mític i no apareix salvatge.");
-            return null;
-
-        } else if (pokemonBuscado == null){
-            System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).");
-            return pokemonBuscado;
 
         }
 
