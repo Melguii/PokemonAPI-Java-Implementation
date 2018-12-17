@@ -5,6 +5,7 @@ import Pokemon.Especial.Legendario.Legendario;
 import Pokemon.Especial.Mistico.Mitico;
 import utils.CheckType;
 
+
 import java.util.ArrayList;
 
 public class Pokedex {
@@ -17,6 +18,10 @@ public class Pokedex {
             }
         }
         return null;
+    }
+
+    public ArrayList<Pokemon> getPokedex() {
+        return pokedex;
     }
 
     public void printPokedex(){
@@ -77,7 +82,7 @@ public class Pokedex {
 
         } else if (pokemonBuscado == null){
             System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).");
-            return null;
+            return pokemonBuscado;
 
         }
 

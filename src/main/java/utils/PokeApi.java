@@ -31,6 +31,7 @@ public class PokeApi {
         JsonParser parser = new JsonParser();
         JsonObject obj;
         JsonReader reader;
+
         try {
             url = new URL(URL + path);
             URLConnection con = url.openConnection();

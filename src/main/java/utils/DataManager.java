@@ -2,6 +2,8 @@ package utils;
 
 import Jugador.*;
 import Pokemon.*;
+import Pokemon.Especial.Legendario.Legendario;
+import Pokemon.Especial.Mistico.Mitico;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -11,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import static java.lang.Math.pow;
+import static java.lang.Math.random;
+
+import java.util.Scanner;
 
 public class DataManager {
     //Constantes
@@ -18,6 +24,7 @@ public class DataManager {
     private static final String FILE1 = "balls.json";
     private static final String FILE2 = "poke.json";
     private static final String FILE3 = "legends.json";
+    private static final String separator = System.lineSeparator();
 
     //Atributos de la clase
     private Tienda tienda = new Tienda();
@@ -112,6 +119,7 @@ public class DataManager {
 
                 System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
                 tienda.mostrarObjetos();
+
                 char eleccion = usuario.pideObjeto();
                 List<Pokeball> pokeball = tienda.getObjetos(eleccion);
                 usuario.addItemsInventario(pokeball);
@@ -126,28 +134,24 @@ public class DataManager {
                 break;
 
             case 4:
-/*
+
                 //Capturar pokemons salvajes
-                boolean disponibilidad = usuario.pokeballsDisponibles();
+                boolean quedanPokeballs = usuario.pokeballsDisponibles();
 
-                if (disponibilidad){
-
+                if (quedanPokeballs){
                     String parametro = usuario.peticionPokemon();
-                    SistemaCaptura sistemaCaptura = new SistemaCaptura();
                     Pokemon pokemon = pokedex.buscarPokemonSalvaje(parametro);
 
-                    if (pokemon.getName() != null){
-                        usuario.
-                        SistemaCaptura captura = new SistemaCaptura();
-                        captura.sistemaCaptura(inventario, pokemon);
+                    if (pokemon != null){
+                        boolean capturado = sistemaCaptura(pokemon);
+
+                        if (capturado){
+                            usuario.pokemonCapturado(pokemon);
+                        }
                     }
-
-
-                } else {
-                    System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
                 }
 
-*/
+
                 break;
 
             case 5:
@@ -199,6 +203,120 @@ public class DataManager {
 
         }
     }
+
+    public boolean sistemaCaptura(Pokemon pokemon){
+        int ecuacion;
+        boolean capturado = false;
+
+        if (pokemon.getClass() == Legendario.class){
+            ecuacion = 1;
+            capturado = resultadoCaptura(pokemon, ecuacion);
+
+        } else if (pokemon.getClass() == Mitico.class){
+            ecuacion = 2;
+            capturado = resultadoCaptura(pokemon, ecuacion);
+
+        } else {
+            ecuacion = 3;
+            System.out.println("Un " + pokemon.getName() + " salvatge aparegué!");
+            capturado = resultadoCaptura(pokemon, ecuacion);
+
+        }
+
+        return capturado;
+    }
+
+    public boolean resultadoCaptura(Pokemon pokemon, int ecuacion){
+        double pc = 0;                 //Probabilidad de Captura
+        double pb;                     //Pokeball Capture Rate
+        double pm;                     //Pokemon Capture Rate
+        boolean atrapado = false;
+        int intents = 5;
+        String tipoPokeball;
+        double random;
+
+        do{
+            System.out.println("Queden "+ usuario.pokeballsTotales() + " Pokéballs i "+ intents +"/5 intents. Quin tipus de Pokéball vol fer servir?");
+            Scanner scPokeball = new Scanner(System.in);
+
+            //Controlar el tipus de pokeball que vol tirar, és a dir, que la tingui en el seu inventari!!!!
+            tipoPokeball = scPokeball.nextLine();
+
+            System.out.println("Tipus de pokeball: " + tipoPokeball);
+
+            random = Math.random();
+            pb = pokeballCaptureRate(tipoPokeball);
+            pm = pokemonCaptureRate(pokemon.getName());
+            pc = resultadoEcuacion(pb, pm, ecuacion);
+
+            System.out.println("Valor de Probabilitat de Caputra" + pc);
+
+            if (pc >= random){
+                atrapado = true;
+            } else {
+
+                System.out.println("La " + tipoPokeball + " ha fallat!");
+                intents--;
+                usuario.setTotalPokeballs(usuario.pokeballsTotales() - 1);
+            }
+
+        }while (intents > 0 && usuario.pokeballsTotales() > 0 && !atrapado);
+
+        if (intents == 0){
+            System.out.println("El Ralts ha escapat...\n");
+
+        } else  if (usuario.pokeballsTotales() == 0) {
+            System.out.println("No queden Pokeballs...\n");
+
+        }
+
+        return atrapado;
+    }
+
+    public double resultadoEcuacion(double pb, double pm, int ecuacion){
+        double pc = 0;
+
+        switch (ecuacion){
+            case 1:
+
+                pc = ((pb/256) + (pm/2048));
+                break;
+
+            case 2:
+
+                pc = (pow(pb, 1.5) + pow(pm, Math.PI))/4096;
+                break;
+
+            case 3:
+
+                pc = ((pb/pb)+(pm/pm))/2;
+                break;
+
+        }
+
+        return pc;
+    }
+
+    public int pokeballCaptureRate(String nombrePokeball){
+        for (Pokeball pokeball: tienda.getPokeballs()) {
+            if (pokeball.getName().equals(nombrePokeball)){
+                return pokeball.getCapture_rate();
+            }
+        }
+
+        return 0;
+    }
+
+    public int pokemonCaptureRate(String nombrePokemon){
+        for (Pokemon pokemon: pokedex.getPokedex()) {
+            if (pokemon.getName().equals(nombrePokemon)){
+                return pokemon.getCapture_rate();
+            }
+        }
+
+        return 0;
+    }
+
 
     private void WriteFileInformation(Pokemon pokemon) throws IOException {
 

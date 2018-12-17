@@ -30,6 +30,14 @@ public class Inventario {
     }
 
     /**
+     * Setter del total de pokeballs
+     * @param pokeballs
+     */
+    public void setTotalPokeballs(int pokeballs){
+        totalPokeballs = pokeballs;
+    }
+
+    /**
      * Obtiene la lista de Pokeballs
      * @return lista de Pokeballs
      */

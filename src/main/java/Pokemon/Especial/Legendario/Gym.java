@@ -1,6 +1,7 @@
 package Pokemon.Especial.Legendario;
 
 public class Gym {
+
     @Override
     public String toString() {
         return "Gym{" +

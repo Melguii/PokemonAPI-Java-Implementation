@@ -34,8 +34,11 @@ public class Tienda {
             System.out.println("Quantes unitats en vol comprar?");
             Scanner sc = new Scanner(System.in);
             int cuantas = sc.nextInt();
+
             if(cuantas < 1){
+
                 return null;
+
             }else{
                 for (int i = 0; i < cuantas; i++) {
                     pokeballs.add(this.pokeballs[index]);

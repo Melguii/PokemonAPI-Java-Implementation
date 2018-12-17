@@ -3,12 +3,7 @@ package Jugador;
 import java.util.List;
 import java.util.Scanner;
 
-import Jugador.Inventario;
-import Pokemon.Especial.Legendario.Legendario;
-import Pokemon.Especial.Mistico.Mitico;
 import Pokemon.Pokemon;
-import utils.CheckType;
-import utils.SistemaCaptura;
 
 public class Usuario {
 
@@ -122,6 +117,7 @@ public class Usuario {
             } else {
                 this.monedas -= price;
                 inventario.addPokeballs(pokeballs);
+                setTotalPokeballs(pokeballsTotales() + pokeballs.size());
                 System.out.println("S'han afegit " + pokeballs.size() + " " +  pokeballs.get(0).getName() + " al seu compte a canvi de "  + price + " monedes.\n");
             }
         }
@@ -153,10 +149,10 @@ public class Usuario {
     }
 
     /**
-     * Funcion encargada de activar el sistema de captura de un pokemon
+     * Funcion encargada de añadir el pokemon capturado al pc
      * @param pokemon
      */
-    public void capturaPokemon(Pokemon pokemon, SistemaCaptura combate){
+    public void pokemonCapturado(Pokemon pokemon){
 
     }
 
@@ -166,10 +162,29 @@ public class Usuario {
      */
     public boolean pokeballsDisponibles(){
         if (inventario.getTotalPokeballs() == 0){
+            System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
             return false;
+
         } else {
             return true;
+
         }
+    }
+
+    /**
+     * Obtenemos cuantas pokeballs le quedan al usuario
+     * @return
+     */
+    public int pokeballsTotales(){
+        return inventario.getTotalPokeballs();
+    }
+
+    /**
+     * Establezemos el nuevo total de pokeballs restantes del usuario
+     * @param pokeballs
+     */
+    public void setTotalPokeballs(int pokeballs){
+        inventario.setTotalPokeballs(pokeballs);
     }
 
 }
