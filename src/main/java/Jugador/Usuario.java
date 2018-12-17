@@ -187,5 +187,24 @@ public class Usuario {
         inventario.setTotalPokeballs(pokeballs);
     }
 
+    /**
+     * En esta funcion se comprueva que el tipo de pokeball que quiere usar el usuario la contenga en su inventario
+     * @param tipoPokeball
+     * @return: si contiene el tipo de pokeball que ha pedido usar
+     */
+    public boolean existeEnInventario(String tipoPokeball){
+        List<Pokeball> pokeballs = inventario.getPokeballs();
+
+        for (Pokeball pokeball : pokeballs) {
+            if (tipoPokeball.equals(pokeball.getName())){
+
+                return true;
+            }
+        }
+
+        System.out.println("Aquest tipus no existeix. Quin tipus de Pokéball vol fer servir?");
+        return false;
+    }
+
 }
 

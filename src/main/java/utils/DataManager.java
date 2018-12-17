@@ -209,15 +209,15 @@ public class DataManager {
         boolean capturado = false;
 
         if (pokemon.getClass() == Legendario.class){
-            ecuacion = 1;
-            capturado = resultadoCaptura(pokemon, ecuacion);
-
-        } else if (pokemon.getClass() == Mitico.class){
             ecuacion = 2;
             capturado = resultadoCaptura(pokemon, ecuacion);
 
-        } else {
+        } else if (pokemon.getClass() == Mitico.class){
             ecuacion = 3;
+            capturado = resultadoCaptura(pokemon, ecuacion);
+
+        } else {
+            ecuacion = 1;
             System.out.println("Un " + pokemon.getName() + " salvatge aparegué!");
             capturado = resultadoCaptura(pokemon, ecuacion);
 
@@ -231,30 +231,32 @@ public class DataManager {
         double pb;                     //Pokeball Capture Rate
         double pm;                     //Pokemon Capture Rate
         boolean atrapado = false;
+        boolean tieneTipoPokeball = true;
         int intents = 5;
         String tipoPokeball;
         double random;
 
         do{
             System.out.println("Queden "+ usuario.pokeballsTotales() + " Pokéballs i "+ intents +"/5 intents. Quin tipus de Pokéball vol fer servir?");
-            Scanner scPokeball = new Scanner(System.in);
 
-            //Controlar el tipus de pokeball que vol tirar, és a dir, que la tingui en el seu inventari!!!!
-            tipoPokeball = scPokeball.nextLine();
+            do {
+                Scanner scPokeball = new Scanner(System.in);
+                tipoPokeball = scPokeball.nextLine();
+                tipoPokeball = tipoPokeball.toLowerCase();
+                tieneTipoPokeball = usuario.existeEnInventario(tipoPokeball);
 
-            System.out.println("Tipus de pokeball: " + tipoPokeball);
+            }while (!tieneTipoPokeball);
 
             random = Math.random();
             pb = pokeballCaptureRate(tipoPokeball);
             pm = pokemonCaptureRate(pokemon.getName());
             pc = resultadoEcuacion(pb, pm, ecuacion);
 
-            System.out.println("Valor de Probabilitat de Caputra" + pc);
 
             if (pc >= random){
                 atrapado = true;
-            } else {
 
+            } else {
                 System.out.println("La " + tipoPokeball + " ha fallat!");
                 intents--;
                 usuario.setTotalPokeballs(usuario.pokeballsTotales() - 1);
