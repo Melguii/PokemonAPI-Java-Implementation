@@ -10,7 +10,7 @@ public class Usuario {
     //Atributos de la clase
     private int monedas;
     private Inventario inventario;
-    private Pc pc;
+    private Pc pc = new Pc();
 
     //Constructor
     public Usuario(Pokeball firstPokeball) {
@@ -154,9 +154,9 @@ public class Usuario {
      * @param pokemon
      */
     public void pokemonCapturado(Pokemon pokemon){
-        System.out.println("El Pokémon Treecko ha estat capturat!");
+        System.out.println("El Pokémon " + pokemon.getName() + " ha estat capturat!");
         pc.setPokemonToPc(pokemon);
-
+        System.out.println();
     }
 
     /**
@@ -167,11 +167,8 @@ public class Usuario {
         if (inventario.getTotalPokeballs() == 0){
             System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.\n");
             return false;
-
-        } else {
-            return true;
-
         }
+            return true;
     }
 
     /**

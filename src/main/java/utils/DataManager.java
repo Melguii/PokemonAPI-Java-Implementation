@@ -141,10 +141,8 @@ public class DataManager {
                 if (quedanPokeballs){
                     String parametro = usuario.peticionPokemon();
                     Pokemon pokemon = pokedex.buscarPokemonSalvaje(parametro);
-
                     if (pokemon != null){
                         boolean capturado = sistemaCaptura(pokemon);
-
                         if (capturado){
                             usuario.pokemonCapturado(pokemon);
                         }
@@ -212,7 +210,7 @@ public class DataManager {
         }
     }
 
-    public boolean sistemaCaptura(Pokemon pokemon){
+    private boolean sistemaCaptura(Pokemon pokemon){
         int ecuacion;
         boolean capturado = false;
 
@@ -234,7 +232,7 @@ public class DataManager {
         return capturado;
     }
 
-    public boolean resultadoCaptura(Pokemon pokemon, int ecuacion){
+    private boolean resultadoCaptura(Pokemon pokemon, int ecuacion){
         double pc = 0;                                              //Probabilidad de Captura
         double pb;                                                  //Pokeball Capture Rate
         double pm;                                                  //Pokemon Capture Rate
@@ -274,7 +272,7 @@ public class DataManager {
         }while (intents > 0 && usuario.pokeballsTotales() > 0 && !atrapado);
 
         if (intents == 0){
-            System.out.println("El Ralts ha escapat...\n");
+            System.out.println("El " + pokemon.getName() + " escapat...\n");
 
         } else  if (usuario.pokeballsTotales() == 0) {
             System.out.println("No queden Pokeballs...\n");
