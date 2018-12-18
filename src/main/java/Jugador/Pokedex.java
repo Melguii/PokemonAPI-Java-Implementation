@@ -1,32 +1,41 @@
 package Jugador;
 
 import Pokemon.*;
+import Pokemon.Especial.Legendario.Gym;
 import Pokemon.Especial.Legendario.Legendario;
+import Pokemon.Especial.Legendario.Location;
 import Pokemon.Especial.Mistico.Mitico;
 import Pokemon.Especial.Mistico.Quest;
 import Pokemon.Especial.Mistico.SpecialResearch;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
 import utils.CheckType;
+import utils.Haversine;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Pokedex {
     private ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>();
 
     public void showEspecialRecerques() {
+
         System.out.println("Recerques Especials:\n");
+
         for (Pokemon i: pokedex) {
             if(i instanceof Mitico){
                 Mitico mitico = (Mitico)i;
+
                 if (mitico.getEnCurso()){
                      SpecialResearch sp =  mitico.getSpecial_Research();
                      ArrayList<Quest> quests = sp.getQuests();
+
                     for (Quest q: quests) {
                         int id = q.getTarget();
                         String name = getPokemonById(id).getName();
                         q.printQuest(name);
+
                     }
                 }
             }
@@ -90,9 +99,11 @@ public class Pokedex {
     public Pokemon buscarPokemonPorId(int id){
         for (Pokemon pokemon : pokedex) {
             if (pokemon.getId() == id){
+
                 return pokemon;
             }
         }
+
         return null;
     }
 
@@ -101,16 +112,20 @@ public class Pokedex {
 
         for (Pokemon pokemon : pokedex) {
             if (pokemon.getName().equals(nombre)){
+
                 return pokemon;
             }
         }
+
         return null;
     }
 
     public Pokemon buscarPokemon(String idPokemon) {
         int idBuscado;
         CheckType ch = new CheckType();
+
         boolean numeric = ch.checkType(idPokemon);
+
         if (numeric){
             idBuscado = Integer.parseInt(idPokemon);
             return buscarPokemonPorId(idBuscado);
@@ -131,15 +146,20 @@ public class Pokedex {
 
     public int checkSpecialResearchIsCompleted(int id) {
         boolean fight = false;
+
         for (Pokemon i: pokedex){
             if (i instanceof Mitico){
                 Mitico mitico = (Mitico)i;
                 fight = mitico.checkSpecialResearch(id);
+
             }
+
             if (fight){
                 return i.getId();
+
             }
         }
+
         return -1;
     }
 
@@ -157,5 +177,42 @@ public class Pokedex {
                 ((Mitico) i).ResetSpecialResearch();
             }
         }
+    }
+
+    public Pokemon buscarGimnasio(Location posicionUsuario){
+        List<Pokemon> legendarios = new ArrayList<Pokemon>();
+        Haversine haversine = new Haversine();
+        float latitud = 0;
+        float longitud = 0;
+        double distance = 0;
+        double minDistance = haversine.distance(posicionUsuario.getLatitude(),
+                posicionUsuario.getLongitude(), latitud, longitud);
+
+        //Buscamos todos los legendarios de la pokédex
+        for (Pokemon pokemon : pokedex){
+            if (pokemon instanceof Legendario){
+                legendarios.add(pokemon);
+            }
+        }
+
+        Pokemon legendario = legendarios.get(0);
+
+        //Buscamos el pokémon con el gimnasio más cercano al usuario
+        for (Pokemon pokemon : legendarios){
+            latitud = pokemon.getGymLegendario().getLocation().getLatitude();
+            longitud = pokemon.getGymLegendario().getLocation().getLongitude();
+
+            distance = haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
+
+            if (distance < minDistance){
+                minDistance = distance;
+                legendario = pokemon;
+            }
+        }
+
+
+        System.out.println("Gimnàs més proper: " + legendario.getGymLegendario().getName() +". Començant raid...");
+
+        return legendario;
     }
 }

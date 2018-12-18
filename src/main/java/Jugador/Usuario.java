@@ -2,8 +2,10 @@ package Jugador;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
+import Pokemon.Especial.Legendario.Location;
 import Pokemon.Pokemon;
 
 public class Usuario {
@@ -174,6 +176,7 @@ public class Usuario {
      * @param pokemon
      */
     public void pokemonCapturado(Pokemon pokemon){
+        System.out.println("El Pokémon "+ pokemon.getName() + " ha estat capturat!");
         System.out.println("El Pokémon " + pokemon.getName() + " ha estat capturat!");
         pc.setPokemonToPc(pokemon);
         System.out.println();
@@ -238,6 +241,54 @@ public class Usuario {
         return false;
     }
 
+    public float[] peticionHaversine(){
+        float[] haversinePosition = new float[2];
+        boolean havPoscionado = false;
+        float latitud = 0;
+        float longitud = 0;
+        int limiteInf;
+        int limiteSup;
+
+        do {
+
+            System.out.println("Latitud actual?");
+            Scanner scPos = new Scanner(System.in);
+            latitud = scPos.nextFloat();
+
+            if (latitud >= -90 && latitud <= 90){
+                havPoscionado = true;
+            }
+
+            if (!havPoscionado){
+                System.out.println("Error, latitud incorrecte!\n");
+            }
+
+        }while (!havPoscionado);
+
+        havPoscionado = false;
+
+        do {
+
+            System.out.println("Longitud actual?");
+            Scanner scPos = new Scanner(System.in);
+            longitud = scPos.nextFloat();
+
+            if (longitud >= -180 && longitud <= 180){
+                havPoscionado = true;
+            }
+
+            if (!havPoscionado){
+                System.out.println("Error, longitud incorrecte!\n");
+            }
+
+        }while (!havPoscionado);
+
+        haversinePosition[0]= latitud;
+        haversinePosition[1]= longitud;
+
+        return haversinePosition;
+    }
+
     public List<Pokemon> getPokemonsCapturados() {
         return  pc.getPokemonsCapturados();
     }
@@ -261,5 +312,10 @@ public class Usuario {
     public void resetSpecialResearch(int id) {
         pokedex.resetSpecialResearch(id);
     }
+
+    public Pokemon getPokemonLegendario(Location location){
+        return pokedex.buscarGimnasio(location);
+    }
+
 }
 

@@ -1,5 +1,8 @@
 package Pokemon;
 
+import Pokemon.Especial.Legendario.Gym;
+import Pokemon.Especial.Legendario.Legendario;
+
 public  abstract class Pokemon {
 
 
@@ -81,5 +84,14 @@ public  abstract class Pokemon {
 
     public abstract double captureEcuation(double pb);
 
+
+    private Legendario legendario;
+
+    public Gym getGymLegendario(){
+        if (legendario instanceof Legendario){
+            return legendario.getGym();
+        }
+        return null;
+    }
 
 }

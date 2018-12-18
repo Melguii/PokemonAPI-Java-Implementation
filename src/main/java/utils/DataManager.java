@@ -3,6 +3,7 @@ package utils;
 import Jugador.*;
 import Pokemon.*;
 import Pokemon.Especial.Legendario.Legendario;
+import Pokemon.Especial.Legendario.Location;
 import Pokemon.Especial.Mistico.Mitico;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -85,6 +86,7 @@ public class DataManager {
     private Pokemon[] loadPokemon(String file) {
         Pokemon[] pokemons;
         JsonReader reader;
+
         try {
             Gson gson = new GsonBuilder().registerTypeAdapter(Pokemon.class, new IdDeserializer()).create();
             reader = new JsonReader(new FileReader(PATH + file));
@@ -99,15 +101,18 @@ public class DataManager {
 
 
     public void seleccionarOpcio(int opcion) {
+
         switch (opcion) {
+
             case 1:
+
                 //Monedas
                 usuario.comprarMonedas();
                 break;
 
             case 2:
-                //Comprar Objetos
 
+                //Comprar Objetos
                 System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
                 tienda.mostrarObjetos();
 
@@ -128,17 +133,22 @@ public class DataManager {
                 boolean miticalIsOn = false;
                 int miticalId = -1;
                 boolean quedanPokeballs;
+
                 do {
                     if (!miticalIsOn){
                         //Capturar pokemons salvajes
                         quedanPokeballs = usuario.pokeballsDisponibles();
+
                         if (quedanPokeballs){
                             Pokemon pokemon = usuario.peticionPokemon();
+
                             if (pokemon != null){
                                 boolean capturado = sistemaCaptura(pokemon);
+
                                 if (capturado){
                                     usuario.pokemonCapturado(pokemon);
                                     miticalId = usuario.checkSpecialResearchIsCompleted(pokemon.getId());
+
                                     if (miticalId != -1){
                                         miticalIsOn = true;
                                     }
@@ -162,10 +172,29 @@ public class DataManager {
                             usuario.resetSpecialResearch(pokemon.getId());
                         }
                     }
+
                 }while (miticalIsOn);
+
                 break;
 
             case 5:
+
+                Location location = new Location();
+
+                float[] haversine = usuario.peticionHaversine();
+
+                location.setLatitude(haversine[0]);
+                location.setLongitude(haversine[1]);
+
+                Pokemon legendario = usuario.getPokemonLegendario(location);
+
+                System.out.println("El boss de raid "+ legendario.getName() +" us repta!");
+
+                boolean capturado = sistemaCaptura(legendario);
+
+                if (capturado){
+                    usuario.pokemonCapturado(legendario);
+                }
 
                 break;
 
