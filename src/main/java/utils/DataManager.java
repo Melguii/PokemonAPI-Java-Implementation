@@ -266,7 +266,7 @@ public class DataManager {
                 "    </style>\n" +
                 "\n" +
                 "    <div>\n" +
-                "        <h1 style=\"text-align: center;color : white;\">Pokemons capturats: "+nPokemons+"</h1>\n" +
+                "        <h1 style=\"text-align: center;color : black;\">Pokemons capturats: "+nPokemons+"</h1>\n" +
                 "    </div>\n" +
                 "    <div class=\"grid-container\">\n" +
                 "\n");
@@ -367,7 +367,7 @@ public class DataManager {
         return atrapado;
     }
 
-    public double resultadoEcuacion(double pb, double pm, int ecuacion){
+    private double resultadoEcuacion(double pb, double pm, int ecuacion){
         double pc = 0;
 
         switch (ecuacion){
@@ -391,7 +391,7 @@ public class DataManager {
         return pc;
     }
 
-    public int pokeballCaptureRate(String nombrePokeball){
+    private int pokeballCaptureRate(String nombrePokeball){
         for (Pokeball pokeball: tienda.getPokeballs()) {
             if (pokeball.getName().equals(nombrePokeball)){
                 return pokeball.getCapture_rate();
@@ -401,7 +401,7 @@ public class DataManager {
         return 0;
     }
 
-    public int pokemonCaptureRate(String nombrePokemon){
+    private int pokemonCaptureRate(String nombrePokemon){
         for (Pokemon pokemon: pokedex.getPokedex()) {
             if (pokemon.getName().equals(nombrePokemon)){
                 return pokemon.getCapture_rate();
