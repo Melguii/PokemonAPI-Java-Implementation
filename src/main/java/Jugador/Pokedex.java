@@ -180,37 +180,26 @@ public class Pokedex {
     }
 
     public Pokemon buscarGimnasio(Location posicionUsuario){
-        List<Pokemon> legendarios = new ArrayList<Pokemon>();
-        Haversine haversine = new Haversine();
+        Pokemon legendario = null;
         float latitud = 0;
         float longitud = 0;
         double distance = 0;
-        double minDistance = haversine.distance(posicionUsuario.getLatitude(),
-                posicionUsuario.getLongitude(), latitud, longitud);
-
-        //Buscamos todos los legendarios de la pokédex
-        for (Pokemon pokemon : pokedex){
-            if (pokemon instanceof Legendario){
-                legendarios.add(pokemon);
-            }
-        }
-
-        Pokemon legendario = legendarios.get(0);
+        double minDistance = 6375;
 
         //Buscamos el pokémon con el gimnasio más cercano al usuario
-        for (Pokemon pokemon : legendarios){
-            latitud = pokemon.getGymLegendario().getLocation().getLatitude();
-            longitud = pokemon.getGymLegendario().getLocation().getLongitude();
+        for (Pokemon pokemon : pokedex){
+            if (pokemon instanceof Legendario){
+                latitud = pokemon.getGymLegendario().getLocation().getLatitude();
+                longitud = pokemon.getGymLegendario().getLocation().getLongitude();
 
-            distance = haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
+                distance = Haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
 
-            if (distance < minDistance){
-                minDistance = distance;
-                legendario = pokemon;
+                if (distance < minDistance){
+                    minDistance = distance;
+                    legendario = pokemon;
+                }
             }
         }
-
-
         System.out.println("Gimnàs més proper: " + legendario.getGymLegendario().getName() +". Començant raid...");
 
         return legendario;
