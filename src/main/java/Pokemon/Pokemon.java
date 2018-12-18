@@ -87,11 +87,4 @@ public  abstract class Pokemon {
 
     private Legendario legendario;
 
-    public Gym getGymLegendario(){
-        if (legendario instanceof Legendario){
-            return legendario.getGym();
-        }
-        return null;
-    }
-
 }

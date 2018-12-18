@@ -11,6 +11,7 @@ public class Legendario extends Pokemon {
         return gym;
     }
 
+
     public void setGym(Gym gym) {
         this.gym = gym;
     }

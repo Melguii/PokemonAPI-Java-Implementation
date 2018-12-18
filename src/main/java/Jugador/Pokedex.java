@@ -180,7 +180,7 @@ public class Pokedex {
     }
 
     public Pokemon buscarGimnasio(Location posicionUsuario){
-        Pokemon legendario = null;
+        Legendario legendario = null;
         float latitud = 0;
         float longitud = 0;
         double distance = 0;
@@ -189,18 +189,20 @@ public class Pokedex {
         //Buscamos el pokémon con el gimnasio más cercano al usuario
         for (Pokemon pokemon : pokedex){
             if (pokemon instanceof Legendario){
-                latitud = pokemon.getGymLegendario().getLocation().getLatitude();
-                longitud = pokemon.getGymLegendario().getLocation().getLongitude();
+                latitud = ((Legendario) pokemon).getGym().getLocation().getLatitude();
+                longitud = ((Legendario) pokemon).getGym().getLocation().getLongitude();
 
                 distance = Haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
 
                 if (distance < minDistance){
                     minDistance = distance;
-                    legendario = pokemon;
+                    legendario = (Legendario) pokemon;
                 }
             }
         }
-        System.out.println("Gimnàs més proper: " + legendario.getGymLegendario().getName() +". Començant raid...");
+        if (legendario != null){
+            System.out.println("Gimnàs més proper: " + legendario.getGym().getName() +". Començant raid...");
+        }
 
         return legendario;
     }
