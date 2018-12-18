@@ -41,4 +41,10 @@ public class SpecialResearch {
         }
         return completed;
     }
+
+    public void reset() {
+        for (Quest q: quests) {
+            q.reset();
+        }
+    }
 }

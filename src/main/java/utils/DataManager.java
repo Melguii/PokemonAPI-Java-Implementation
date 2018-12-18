@@ -148,9 +148,19 @@ public class DataManager {
                     }else{
                         Pokemon pokemon = usuario.getPokemonById(miticalId);
                         System.out.println("Recerca Especial completada: Se t'apareix el mític " + pokemon.getName() + "!");
-                        sistemaCaptura(pokemon);
-                        usuario.pokemonCapturado(pokemon);
-                        miticalIsOn = false;
+                        boolean capturado = sistemaCaptura(pokemon);
+                        if (capturado){
+                            usuario.pokemonCapturado(pokemon);
+                            usuario.setCompletedResearch(pokemon.getId());
+                            miticalId = usuario.checkSpecialResearchIsCompleted(pokemon.getId());
+                            if (miticalId != -1){
+                                miticalIsOn = true;
+                            }else{
+                                miticalIsOn = false;
+                            }
+                        }else{
+                            usuario.resetSpecialResearch(pokemon.getId());
+                        }
                     }
                 }while (miticalIsOn);
                 break;
@@ -299,31 +309,61 @@ public class DataManager {
     }
 
     private boolean sistemaCaptura(Pokemon pokemon){
-        int ecuacion;
         boolean capturado;
 
         if (pokemon.getClass() == Legendario.class){
-            ecuacion = 2;
-            capturado = resultadoCaptura(pokemon, ecuacion);
+            capturado = resultadoCaptura(pokemon);
 
         } else if (pokemon.getClass() == Mitico.class){
-            ecuacion = 3;
-            capturado = resultadoCaptura(pokemon, ecuacion);
+            capturado = resultadoCapturaMi(pokemon);
 
         } else {
-            ecuacion = 1;
             System.out.println("Un " + pokemon.getName() + " salvatge aparegué!");
-            capturado = resultadoCaptura(pokemon, ecuacion);
+            capturado = resultadoCaptura(pokemon);
 
         }
 
         return capturado;
     }
 
-    private boolean resultadoCaptura(Pokemon pokemon, int ecuacion){
+    private boolean resultadoCapturaMi(Pokemon pokemon){
+        boolean pokeballExitente = false;
+        boolean atrapado = false;
+        int intents = 5;
+        String tipoPokeball;
+        Pokeball[] pokeballsExistentes = tienda.getPokeballs();
+        do {
+            System.out.println("Tienes Pokeballs ilimitadas, pero solo 5 intentos, que pokeball quieres?");
+            do {
+                Scanner scPokeball = new Scanner(System.in);
+                tipoPokeball = scPokeball.nextLine();
+                tipoPokeball = tipoPokeball.toLowerCase();
+                for (Pokeball pk:pokeballsExistentes) {
+                    if (pk.getName().equals(tipoPokeball)){
+                        pokeballExitente = true;
+                    }
+                }
+            }while (!pokeballExitente);
+            double random = Math.random();
+            int pb = pokeballCaptureRate(tipoPokeball);
+            double pc = pokemon.captureEcuation(pb);
+
+
+            if (pc >= random){
+                atrapado = true;
+
+            } else {
+                System.out.println("La " + tipoPokeball + " ha fallat!");
+                intents--;
+            }
+
+        }while (intents > 0 && !atrapado);
+        return  atrapado;
+    }
+
+    private boolean resultadoCaptura(Pokemon pokemon){
         double pc;                                              //Probabilidad de Captura
         double pb;                                                  //Pokeball Capture Rate
-        double pm;                                                  //Pokemon Capture Rate
         boolean atrapado = false;
         boolean tieneTipoPokeball;
         int intents = 5;

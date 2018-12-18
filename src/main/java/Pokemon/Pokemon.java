@@ -80,4 +80,6 @@ public  abstract class Pokemon {
     }
 
     public abstract double captureEcuation(double pb);
+
+
 }

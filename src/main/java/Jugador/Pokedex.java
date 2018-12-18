@@ -142,4 +142,20 @@ public class Pokedex {
         }
         return -1;
     }
+
+    public void setCompletedResearch(int id) {
+        for (Pokemon i : pokedex) {
+            if (i.getId() == id && i instanceof  Mitico){
+                ((Mitico) i).SpecialResearchCompleted();
+            }
+        }
+    }
+
+    public void resetSpecialResearch(int id) {
+        for (Pokemon i : pokedex) {
+            if (i.getId() == id && i instanceof  Mitico){
+                ((Mitico) i).ResetSpecialResearch();
+            }
+        }
+    }
 }

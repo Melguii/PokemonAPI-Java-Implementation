@@ -253,5 +253,13 @@ public class Usuario {
     public Pokemon getPokemonById(int id) {
         return pokedex.getPokemonById(id);
     }
+
+    public void setCompletedResearch(int id) {
+        pokedex.setCompletedResearch(id);
+    }
+
+    public void resetSpecialResearch(int id) {
+        pokedex.resetSpecialResearch(id);
+    }
 }
 

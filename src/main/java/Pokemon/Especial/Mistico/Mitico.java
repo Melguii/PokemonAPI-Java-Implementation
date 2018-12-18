@@ -4,6 +4,11 @@ import Pokemon.Pokemon;
 public class Mitico extends Pokemon {
     private SpecialResearch special_research;
     private Boolean enCurso = false;
+    private Boolean finalizada = false;
+
+    public void SpecialResearchCompleted(){
+        finalizada = true;
+    }
 
 
     public Boolean getEnCurso() {
@@ -19,6 +24,11 @@ public class Mitico extends Pokemon {
         return special_research;
     }
 
+    public  void ResetSpecialResearch(){
+        special_research.reset();
+        enCurso = false;
+        finalizada = false;
+    };
 
     public boolean checkSpecialResearch(int id){
         return special_research.checkSpecialResearch(id);

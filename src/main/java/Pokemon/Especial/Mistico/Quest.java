@@ -26,6 +26,10 @@ public class Quest {
         percentaje =  obtenidos / quantity * 100;
     }
 
+    public void reset(){
+        obtenidos = 0;
+        percentaje = 0;
+    }
 
     public int getTarget() {
         return target;
