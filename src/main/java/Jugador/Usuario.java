@@ -218,5 +218,8 @@ public class Usuario {
         return false;
     }
 
+    public List<Pokemon> getPokemonsCapturados() {
+        return  pc.getPokemonsCapturados();
+    }
 }
 

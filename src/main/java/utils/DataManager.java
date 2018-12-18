@@ -9,10 +9,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
 import static java.lang.Math.pow;
 import static java.lang.Math.random;
 
@@ -161,7 +159,15 @@ public class DataManager {
                 break;
 
             case 7:
-
+                List<Pokemon> pokemonsCapturados = usuario.getPokemonsCapturados();
+                for (Pokemon i :pokemonsCapturados) {
+                    setMoreInformactionOfPokemon(i);
+                }
+                try {
+                    WriteFileCapturados(pokemonsCapturados);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             case 8:
@@ -170,8 +176,7 @@ public class DataManager {
                 Pokemon pokemon = pokedex.buscarPokemon(idPokemon);
 
                 if(pokemon != null){
-                    PokeApi pokeApi = new PokeApi(pokemon.getId());
-                    setMoreInformactionOfPokemon(pokemon,pokeApi);
+                    setMoreInformactionOfPokemon(pokemon);
 
                     try {
 
@@ -208,6 +213,86 @@ public class DataManager {
                 break;
 
         }
+    }
+
+    private void WriteFileCapturados(List<Pokemon> pokemonsCapturados) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter( "Pokemons_capturats.html"));
+        int nPokemons = pokemonsCapturados.size();
+        String backgorund = getBackgroundColor();
+        writer.write("<html>\n" +
+                "\n" +
+                "<head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                "    <title>Pokemons capturats: "+nPokemons+"</title>\n" +
+                "    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans\" rel=\"stylesheet\">\n" +
+                "\n" +
+                "\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "    <style>\n" +
+                "        body {\n" +
+                "            "+backgorund+";\n" +
+                "            font-family: 'Open Sans', sans-serif;\n" +
+                "            max-width: 90%;\n" +
+                "            margin: 0 auto;\n" +
+                "            margin-top: 2%;\n" +
+                "        }\n" +
+                "\n" +
+                "        .grid-container {\n" +
+                "            display: grid;\n" +
+                "            grid-template-columns: auto auto auto auto auto auto;\n" +
+                "            grid-column-gap: 50px;\n" +
+                "            grid-row-gap: 50px;\n" +
+                "        }\n" +
+                "\n" +
+                "        .content {\n" +
+                "            border-radius: 25px;\n" +
+                "            padding: 10px;\n" +
+                "            animation-name: example;\n" +
+                "            animation-duration: 4s;\n" +
+                "            min-width: 100%;\n" +
+                "        }\n" +
+                "\n" +
+                "        @keyframes example {\n" +
+                "            from {\n" +
+                "                background-color : white;\n" +
+                "            }\n" +
+                "\n" +
+                "            to {\n" +
+                "                background-color: none;\n" +
+                "            }\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "\n" +
+                "    <div>\n" +
+                "        <h1 style=\"text-align: center;color : white;\">Pokemons capturats: "+nPokemons+"</h1>\n" +
+                "    </div>\n" +
+                "    <div class=\"grid-container\">\n" +
+                "\n");
+        ArrayList<Integer> visitados = new ArrayList<>();
+        for (Pokemon i : pokemonsCapturados) {
+            if (!visitados.contains(i.getId())){
+                visitados.add(i.getId());
+                int total = 0;
+                for (Pokemon j :pokemonsCapturados) {
+                    if (i.getId() == j.getId()){
+                        total++;
+                    }
+                }
+                String backgroundiv = getBackgroundColor();
+                writer.write("<div class=\"content\" style=\""+backgroundiv+"\">\n" +
+                        "            <h2 style=\"text-align: center;\">"+i.getName() + " x"+ total+"</h2><img src=\""+ i.getFront_default() +"\"\n" +
+                        "                style=\"display: block;width: 70%;margin: auto;\">\n" +
+                        "        </div>");
+            }
+        }
+        writer.write("        </div>\n" +
+                "    </div>\n" +
+                        "</body>\n" +
+                        "\n" +
+                        "</html>");
+        writer.close();
     }
 
     private boolean sistemaCaptura(Pokemon pokemon){
@@ -330,25 +415,70 @@ public class DataManager {
     private void WriteFileInformation(Pokemon pokemon) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(pokemon.getName() + ".html"));
-        writer.write("<html>");
-        writer.write("<head>");
-        writer.write("<title>" + pokemon.getName() + "</title>");
-        writer.write("<head>");
-        writer.write("</html>");
-        writer.write("<body>");
-        writer.write("<h1>" + pokemon.getName() + "(" + pokemon.getId() + ")" + "</h1>");
-        writer.write("<img src=\"" + pokemon.getFront_default() + "\"style=\"width:500px;height:500px;\">");
-        writer.write("<p>" + pokemon.getFlavor_text() +"</p>");
-        writer.write("</body>");
+        String title = pokemon.getName().toUpperCase();
+        String h1 = title  + "(" + pokemon.getId() + ")";
+        String description = pokemon.getFlavor_text();
+        String img = pokemon.getFront_default();
+        String background_div = getBackgroundColor();
+        String background_body = getBackgroundColor();
+        writer.write("<html>\n" +
+                "\n" +
+                "<head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                "    <title>" + title +  "</title>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "    <style>\n" +
+                "        body {\n" +
+                "            "+background_body +";\n" +
+                "        }\n" +
+                "\n" +
+                "        .content {\n" +
+                "            border-radius: 25px;\n" +
+                "            "+background_div +";\n" +
+                "            padding: 10px;\n" +
+                "            max-width: 800px;\n" +
+                "            position: fixed;\n" +
+                "            top: 50%;\n" +
+                "            left: 50%;\n" +
+                "            transform: translate(-50%, -50%);\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "\n" +
+                "\n" +
+                "    <div class=\"content\">\n" +
+                "        <h1 style=\"text-align: center;\">" + h1 + "</h1><img src=\""+ img +"\"\n" +
+                "            style=\"display: block;width: 50%;margin: auto;\">\n" +
+                "        <div style=\"padding: 20px;\">\n" +
+                "            <p>" + description + "</p>\n" +
+                "        </div>\n" +
+                "    </div>\n" +
+                "</body>\n" +
+                "\n" +
+                "</html>");
         writer.close();
     }
 
-    private void setMoreInformactionOfPokemon(Pokemon pokemon, PokeApi pokeApi) {
-        pokemon.setHeight(pokeApi.getHeight());
-        pokemon.setWeight(pokeApi.getWeight());
-        pokemon.setFront_default(pokeApi.getDefaultSprite());
-        pokemon.setFlavor_text(pokeApi.getFlavorTextEnglish());
-        pokemon.setBase_experience(pokeApi.getBaseExperience());
+    private String getBackgroundColor() {
+        int color1 = (int) ((Math.random() * ((255 - 180) + 1)) + 180);
+        int color2 = (int) ((Math.random() * ((255 - 180) + 1)) + 180);
+        int color3 = (int) ((Math.random() * ((255 - 180) + 1)) + 180);
+        return  "background-color:rgb(" + color1 + ", " +color2  + ", " + color3  +")";
+    }
+
+    private void setMoreInformactionOfPokemon(Pokemon pokemon) {
+        if (pokemon.getFlavor_text() == null){
+            PokeApi pokeApi = new PokeApi(pokemon.getId());
+            pokemon.setHeight(pokeApi.getHeight());
+            pokemon.setWeight(pokeApi.getWeight());
+            pokemon.setFront_default(pokeApi.getDefaultSprite());
+            pokemon.setFlavor_text(pokeApi.getFlavorTextEnglish());
+            pokemon.setBase_experience(pokeApi.getBaseExperience());
+        }
     }
 
 }

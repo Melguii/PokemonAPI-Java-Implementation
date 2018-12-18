@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokemons capturats: 0</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <style>
+        body {
+            background-color:rgb(249, 245, 187);
+            font-family: 'Open Sans', sans-serif;
+            max-width: 90%;
+            margin: 0 auto;
+            margin-top: 2%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto;
+            grid-column-gap: 50px;
+            grid-row-gap: 50px;
+        }
+
+        .content {
+            border-radius: 25px;
+            padding: 10px;
+            animation-name: example;
+            animation-duration: 4s;
+            min-width: 100%;
+        }
+
+        @keyframes example {
+            from {
+                background-color : none;
+            }
+
+            to {
+                background-color: white;
+            }
+        }
+    </style>
+
+    <div>
+        <h1 style="text-align: center;color : white;">Pokemons capturats: 0</h1>
+    </div>
+    <div class="grid-container">
+

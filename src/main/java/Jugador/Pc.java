@@ -8,11 +8,11 @@ import java.util.List;
 public class Pc {
     private List<Pokemon> pc = new ArrayList<Pokemon>();
 
-    public List<Pokemon> getPc() {
-        return pc;
-    }
-
     public void setPokemonToPc(Pokemon pokemonToPc) {
         pc.add(pokemonToPc);
+    }
+
+    public List<Pokemon> getPokemonsCapturados() {
+        return pc;
     }
 }
