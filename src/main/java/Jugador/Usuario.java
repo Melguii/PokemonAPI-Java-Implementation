@@ -176,7 +176,6 @@ public class Usuario {
      * @param pokemon
      */
     public void pokemonCapturado(Pokemon pokemon){
-        System.out.println("El Pokémon "+ pokemon.getName() + " ha estat capturat!");
         System.out.println("El Pokémon " + pokemon.getName() + " ha estat capturat!");
         pc.setPokemonToPc(pokemon);
         System.out.println();
