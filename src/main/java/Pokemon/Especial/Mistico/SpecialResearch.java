@@ -29,17 +29,15 @@ public class SpecialResearch {
         this.quests = quests;
     }
 
-    public boolean checkSpecialResearch(int id) {
-        boolean completed = true;
+    public int checkSpecialResearch(int id) {
+        int sum = 0;
         for (Quest q: quests) {
             if (q.getTarget() == id){
                 q.AddObtenido();
             }
-            if (q.getPercentaje() != 100){
-                completed = false;
-            }
+            sum += q.getPercentaje();
         }
-        return completed;
+        return sum/quests.size();
     }
 
     public void reset() {

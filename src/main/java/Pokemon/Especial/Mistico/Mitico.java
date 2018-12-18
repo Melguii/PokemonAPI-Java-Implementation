@@ -15,8 +15,8 @@ public class Mitico extends Pokemon {
         return enCurso;
     }
 
-    public void setEnCurso(Boolean enCurso) {
-        this.enCurso = enCurso;
+    private void setEnCurso() {
+        this.enCurso = true;
     }
 
     public SpecialResearch getSpecial_Research() {
@@ -31,7 +31,18 @@ public class Mitico extends Pokemon {
     };
 
     public boolean checkSpecialResearch(int id){
-        return special_research.checkSpecialResearch(id);
+        if (!finalizada){
+            int x = special_research.checkSpecialResearch(id);
+            if (x != 0){
+                setEnCurso();
+            }
+            if (x == 100){
+                return true;
+            }
+            return false;
+        }else {
+            return false;
+        }
     }
 
     public void setSpecial_Research(SpecialResearch special_research) {

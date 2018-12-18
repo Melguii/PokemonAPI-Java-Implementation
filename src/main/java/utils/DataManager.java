@@ -333,7 +333,7 @@ public class DataManager {
         String tipoPokeball;
         Pokeball[] pokeballsExistentes = tienda.getPokeballs();
         do {
-            System.out.println("Tienes Pokeballs ilimitadas, pero solo 5 intentos, que pokeball quieres?");
+            System.out.println("Tienes Pokeballs ilimitadas, pero solo " + intents + "  intentos, que pokeball quieres?");
             do {
                 Scanner scPokeball = new Scanner(System.in);
                 tipoPokeball = scPokeball.nextLine();
