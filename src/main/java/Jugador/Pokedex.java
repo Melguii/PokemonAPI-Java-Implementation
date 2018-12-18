@@ -3,13 +3,27 @@ package Jugador;
 import Pokemon.*;
 import Pokemon.Especial.Legendario.Legendario;
 import Pokemon.Especial.Mistico.Mitico;
+import Pokemon.Especial.Mistico.Quest;
+import Pokemon.Especial.Mistico.SpecialResearch;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
 import utils.CheckType;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pokedex {
     private ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>();
+
+    public void getEspecialRecerques(Pokedex p) {
+        System.out.println("Recerques Especials:");
+        for (Pokemon i: pokedex) {
+            if(i instanceof Mitico){
+                Mitico mitico = (Mitico)i;
+                mitico.getSpecial_Research(p);
+            }
+        }
+    }
 
     public Pokemon getPokemonById(int id) {
         for (Pokemon i : pokedex) {
@@ -24,30 +38,6 @@ public class Pokedex {
         return pokedex;
     }
 
-    public void printPokedex(){
-        for (Pokemon i : pokedex) {
-            if(i.getClass() == Salvaje.class){
-                Salvaje j = (Salvaje)i;
-                System.out.println(j.getId());
-                System.out.println(j.getName());
-                System.out.println(j.getCapture_rate());
-            }
-            if (i.getClass() == Legendario.class){
-                Legendario j = (Legendario)i;
-                System.out.println(j.getId());
-                System.out.println(j.getName());
-                System.out.println(j.getCapture_rate());
-                System.out.println(j.getGym());
-            }
-            if (i.getClass() == Mitico.class){
-                Mitico j = (Mitico)i;
-                System.out.println(j.getId());
-                System.out.println(j.getName());
-                System.out.println(j.getCapture_rate());
-                System.out.println(j.getSpecial_Research());
-            }
-        }
-    }
 
     public void setPokedex(ArrayList<Pokemon> pokedex) {
         this.pokedex = pokedex;
@@ -128,4 +118,5 @@ public class Pokedex {
             return buscarPokemonPorNombre(idPokemon);
         }
     }
+
 }

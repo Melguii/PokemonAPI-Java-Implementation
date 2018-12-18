@@ -1,19 +1,13 @@
 package Pokemon.Especial.Mistico;
 
+import Jugador.Pokedex;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialResearch {
 
     private String name;
-
-    @Override
-    public String toString() {
-        return "SpecialResearch{" +
-                "name='" + name + '\'' +
-                ", quests=" + quests +
-                '}';
-    }
 
     private List<Quest> quests;
 
@@ -29,12 +23,20 @@ public class SpecialResearch {
         this.name = name;
     }
 
-    public List<Quest> getQuests() {
-        return quests;
+    public void printQuests(Pokedex p) {
+        for (Quest q: quests) {
+            q.printQuest(p);
+        }
+        System.out.println();
     }
 
     public void setQuests(List<Quest> quests) {
         this.quests = quests;
     }
 
+    public void showQuests() {
+        for (Quest i:quests) {
+            i.showQuest();
+        }
+    }
 }

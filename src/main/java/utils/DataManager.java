@@ -155,7 +155,7 @@ public class DataManager {
                 break;
 
             case 6:
-
+                pokedex.getEspecialRecerques(pokedex);
                 break;
 
             case 7:
