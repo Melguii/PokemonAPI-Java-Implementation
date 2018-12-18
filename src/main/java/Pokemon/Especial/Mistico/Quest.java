@@ -1,17 +1,10 @@
 package Pokemon.Especial.Mistico;
 
-import Jugador.Pokedex;
-
 public class Quest {
 
     private int target;
     private int quantity;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private String name;
     private int obtenidos;
 
     private int percentaje;
@@ -50,10 +43,8 @@ public class Quest {
         this.quantity = quantity;
     }
 
-    public void showQuest() {
-    }
 
-    public void printQuest(Pokedex p) {
-        System.out.println("\t\t* Capturar " + p.getPokemonById(target).getName() + ": " + obtenidos + "/" + quantity + " (" + percentaje +"%)");
+    public void printQuest(String name) {
+        System.out.println("\t\t* Capturar " + name + ": " + obtenidos + "/" + quantity + " (" + percentaje +"%)");
     }
 }

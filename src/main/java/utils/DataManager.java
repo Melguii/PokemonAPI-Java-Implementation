@@ -12,7 +12,6 @@ import java.io.*;
 import java.util.*;
 
 import static java.lang.Math.pow;
-import static java.lang.Math.random;
 
 import java.util.Scanner;
 
@@ -22,11 +21,9 @@ public class DataManager {
     private static final String FILE1 = "balls.json";
     private static final String FILE2 = "poke.json";
     private static final String FILE3 = "legends.json";
-    private static final String separator = System.lineSeparator();
 
     //Atributos de la clase
     private Tienda tienda = new Tienda();
-    private Pokedex pokedex = new Pokedex();
     private Usuario usuario;
 
     //Getters
@@ -41,11 +38,10 @@ public class DataManager {
         try {
             reader = new JsonReader(new FileReader(PATH + FILE1));
             pokeballs = gson.fromJson(reader, Pokeball[].class);
+            this.tienda.setPokeballs(pokeballs);
         } catch (FileNotFoundException e) {
-            pokeballs = null;
             e.printStackTrace();
         }
-        this.tienda.setPokeballs(pokeballs);
     }
 
     /**
@@ -61,7 +57,7 @@ public class DataManager {
      */
     public void loadDataPokedex() {
         Pokemon[] pokemonsAux = loadPokemon(FILE2);
-        ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>(Arrays.asList(pokemonsAux));
+        ArrayList<Pokemon> pokedex = new ArrayList<>(Arrays.asList(pokemonsAux));
         pokemonsAux = loadPokemon(FILE3);
         int i = 0;
         for (Pokemon pokemonActual : pokedex) {
@@ -74,7 +70,7 @@ public class DataManager {
             }
             i++;
         }
-        this.pokedex.setPokedex(pokedex);
+        usuario.setPokedex(pokedex);
     }
 
 
@@ -101,10 +97,7 @@ public class DataManager {
     }
 
 
-    /**
-     * Maneja los datos
-     * @param opcion
-     */
+
     public void seleccionarOpcio(int opcion) {
         switch (opcion) {
             case 1:
@@ -132,22 +125,34 @@ public class DataManager {
                 break;
 
             case 4:
-
-                //Capturar pokemons salvajes
-                boolean quedanPokeballs = usuario.pokeballsDisponibles();
-
-                if (quedanPokeballs){
-                    String parametro = usuario.peticionPokemon();
-                    Pokemon pokemon = pokedex.buscarPokemonSalvaje(parametro);
-                    if (pokemon != null){
-                        boolean capturado = sistemaCaptura(pokemon);
-                        if (capturado){
-                            usuario.pokemonCapturado(pokemon);
+                boolean miticalIsOn = false;
+                int miticalId = -1;
+                boolean quedanPokeballs;
+                do {
+                    if (!miticalIsOn){
+                        //Capturar pokemons salvajes
+                        quedanPokeballs = usuario.pokeballsDisponibles();
+                        if (quedanPokeballs){
+                            Pokemon pokemon = usuario.peticionPokemon();
+                            if (pokemon != null){
+                                boolean capturado = sistemaCaptura(pokemon);
+                                if (capturado){
+                                    usuario.pokemonCapturado(pokemon);
+                                    miticalId = usuario.checkSpecialResearchIsCompleted(pokemon.getId());
+                                    if (miticalId != -1){
+                                        miticalIsOn = true;
+                                    }
+                                }
+                            }
                         }
+                    }else{
+                        Pokemon pokemon = usuario.getPokemonById(miticalId);
+                        System.out.println("Recerca Especial completada: Se t'apareix el mític " + pokemon.getName() + "!");
+                        sistemaCaptura(pokemon);
+                        usuario.pokemonCapturado(pokemon);
+                        miticalIsOn = false;
                     }
-                }
-
-
+                }while (miticalIsOn);
                 break;
 
             case 5:
@@ -155,7 +160,7 @@ public class DataManager {
                 break;
 
             case 6:
-                pokedex.getEspecialRecerques(pokedex);
+                usuario.getEspecialRecerques();
                 break;
 
             case 7:
@@ -172,12 +177,10 @@ public class DataManager {
 
             case 8:
 
-                String idPokemon = usuario.peticionInformacion();
-                Pokemon pokemon = pokedex.buscarPokemon(idPokemon);
-
+                Pokemon pokemon = usuario.peticionInformacionPokemon();
                 if(pokemon != null){
-                    setMoreInformactionOfPokemon(pokemon);
 
+                    setMoreInformactionOfPokemon(pokemon);
                     try {
 
                         WriteFileInformation(pokemon);
@@ -297,7 +300,7 @@ public class DataManager {
 
     private boolean sistemaCaptura(Pokemon pokemon){
         int ecuacion;
-        boolean capturado = false;
+        boolean capturado;
 
         if (pokemon.getClass() == Legendario.class){
             ecuacion = 2;
@@ -318,11 +321,11 @@ public class DataManager {
     }
 
     private boolean resultadoCaptura(Pokemon pokemon, int ecuacion){
-        double pc = 0;                                              //Probabilidad de Captura
+        double pc;                                              //Probabilidad de Captura
         double pb;                                                  //Pokeball Capture Rate
         double pm;                                                  //Pokemon Capture Rate
         boolean atrapado = false;
-        boolean tieneTipoPokeball = true;
+        boolean tieneTipoPokeball;
         int intents = 5;
         String tipoPokeball;
         double random;
@@ -341,8 +344,7 @@ public class DataManager {
 
             random = Math.random();
             pb = pokeballCaptureRate(tipoPokeball);
-            pm = pokemonCaptureRate(pokemon.getName());
-            pc = resultadoEcuacion(pb, pm, ecuacion);
+            pc = pokemon.captureEcuation(pb);
 
 
             if (pc >= random){
@@ -367,44 +369,10 @@ public class DataManager {
         return atrapado;
     }
 
-    private double resultadoEcuacion(double pb, double pm, int ecuacion){
-        double pc = 0;
-
-        switch (ecuacion){
-            case 1:
-
-                pc = ((pb/256) + (pm/2048));
-                break;
-
-            case 2:
-
-                pc = (pow(pb, 1.5) + pow(pm, Math.PI))/4096;
-                break;
-
-            case 3:
-
-                pc = ((pb/pb)+(pm/pm))/2;
-                break;
-
-        }
-
-        return pc;
-    }
-
     private int pokeballCaptureRate(String nombrePokeball){
         for (Pokeball pokeball: tienda.getPokeballs()) {
             if (pokeball.getName().equals(nombrePokeball)){
                 return pokeball.getCapture_rate();
-            }
-        }
-
-        return 0;
-    }
-
-    private int pokemonCaptureRate(String nombrePokemon){
-        for (Pokemon pokemon: pokedex.getPokedex()) {
-            if (pokemon.getName().equals(nombrePokemon)){
-                return pokemon.getCapture_rate();
             }
         }
 

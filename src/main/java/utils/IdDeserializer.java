@@ -4,7 +4,6 @@ import Pokemon.Especial.Legendario.Legendario;
 import Pokemon.Especial.Mistico.Mitico;
 import Pokemon.*;
 import com.google.gson.*;
-
 import java.lang.reflect.Type;
 
 public class IdDeserializer implements JsonDeserializer<Pokemon> {

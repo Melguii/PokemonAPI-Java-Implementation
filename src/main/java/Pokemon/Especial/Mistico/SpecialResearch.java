@@ -1,15 +1,16 @@
 package Pokemon.Especial.Mistico;
-
-import Jugador.Pokedex;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class SpecialResearch {
 
     private String name;
 
-    private List<Quest> quests;
+    public ArrayList<Quest> getQuests() {
+        return quests;
+    }
+
+    private ArrayList<Quest> quests;
 
     public SpecialResearch() {
         this.quests = new ArrayList<Quest>();
@@ -23,20 +24,21 @@ public class SpecialResearch {
         this.name = name;
     }
 
-    public void printQuests(Pokedex p) {
-        for (Quest q: quests) {
-            q.printQuest(p);
-        }
-        System.out.println();
-    }
 
-    public void setQuests(List<Quest> quests) {
+    public void setQuests(ArrayList<Quest> quests) {
         this.quests = quests;
     }
 
-    public void showQuests() {
-        for (Quest i:quests) {
-            i.showQuest();
+    public boolean checkSpecialResearch(int id) {
+        boolean completed = true;
+        for (Quest q: quests) {
+            if (q.getTarget() == id){
+                q.AddObtenido();
+            }
+            if (q.getPercentaje() != 100){
+                completed = false;
+            }
         }
+        return completed;
     }
 }

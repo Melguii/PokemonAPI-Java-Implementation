@@ -1,17 +1,35 @@
 package Pokemon.Especial.Mistico;
-
-import Jugador.Pokedex;
 import Pokemon.Pokemon;
 
 public class Mitico extends Pokemon {
     private SpecialResearch special_research;
+    private Boolean enCurso = false;
 
-    public void getSpecial_Research(Pokedex p) {
+
+    public Boolean getEnCurso() {
+        return enCurso;
+    }
+
+    public void setEnCurso(Boolean enCurso) {
+        this.enCurso = enCurso;
+    }
+
+    public SpecialResearch getSpecial_Research() {
         System.out.println("\t- "+special_research.getName() + " (" + getName() + "):");
-        special_research.printQuests(p);
+        return special_research;
+    }
+
+
+    public boolean checkSpecialResearch(int id){
+        return special_research.checkSpecialResearch(id);
     }
 
     public void setSpecial_Research(SpecialResearch special_research) {
         this.special_research = special_research;
+    }
+
+    @Override
+    public double captureEcuation(double pb) {
+        return (pb/pb)+(getCapture_rate()/getCapture_rate())/2;
     }
 }

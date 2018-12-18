@@ -9,8 +9,8 @@ public class Main {
         DataManager dataManager = new DataManager();
         Menu m = new Menu();
         dataManager.loadDataPokeballs();
-        dataManager.loadDataPokedex();
         dataManager.loadUser();
+        dataManager.loadDataPokedex();
         do{
             m.mostrarMenu();
             do {

@@ -1,5 +1,6 @@
 package Jugador;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +12,25 @@ public class Usuario {
     private int monedas;
     private Inventario inventario;
     private Pc pc = new Pc();
+    private Pokedex pokedex = new Pokedex();
+
+    public void getEspecialRecerques() {
+        pokedex.showEspecialRecerques();
+    }
+
+
+    private Pokemon buscarPokemonSalvaje(String parametro) {
+       return pokedex.buscarPokemonSalvaje(parametro);
+    }
+
+    public Pokedex getPokedex() {
+        return pokedex;
+    }
+
+    public void setPokedex(ArrayList<Pokemon> pokedex2) {
+        this.pokedex.setPokedex(pokedex2);
+    }
+
 
     //Constructor
     public Usuario(Pokeball firstPokeball) {
@@ -135,18 +155,18 @@ public class Usuario {
      * Pedimos al usuario que introduzca el pokemon que está buscando
      * @return devuelve el ie o
      */
-    public String peticionPokemon(){
-
+    public Pokemon peticionPokemon(){
             System.out.println("Quin Pokémon vol buscar?");
             Scanner sc = new Scanner(System.in);
-            return sc.nextLine();
+            String pokemon = sc.nextLine();
+            return buscarPokemonSalvaje(pokemon);
 
     }
 
-    public String peticionInformacion(){
+    public Pokemon peticionInformacionPokemon(){
         System.out.println("De quin Pokémon vol informació?");
         Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
+        return pokedex.buscarPokemon(sc.nextLine());
     }
 
     /**
@@ -220,6 +240,18 @@ public class Usuario {
 
     public List<Pokemon> getPokemonsCapturados() {
         return  pc.getPokemonsCapturados();
+    }
+
+    public double consultaCaptureRate(String name) {
+        return pokedex.getCaptureRatePokemon(name);
+    }
+
+    public int checkSpecialResearchIsCompleted(int id) {
+        return pokedex.checkSpecialResearchIsCompleted(id);
+    }
+
+    public Pokemon getPokemonById(int id) {
+        return pokedex.getPokemonById(id);
     }
 }
 
