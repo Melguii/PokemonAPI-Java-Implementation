@@ -238,22 +238,6 @@ public class DataManager {
 
                 break;
 
-            case 10:
-                //Si queremos hacer el sistema de partidas:
-                //      Deberíamos colocar un sitema que controle si el usuario quiere guardar o no la partida
-
-                //En caso que hagamos partidas ya creadas:
-                //System.out.println("Guardant Partida");
-                //wait(1);
-                //System.out.print(".");
-                //wait(1);
-                //System.out.print(".");
-                //wait(1);
-                //System.out.println(".");
-                //wait(2);
-                //System.out.println("Fet!\nTorna quan vulguis!");
-                break;
-
         }
     }
 
@@ -423,6 +407,7 @@ public class DataManager {
                 System.out.println("La " + tipoPokeball + " ha fallat!");
                 intents--;
                 usuario.setTotalPokeballs(usuario.pokeballsTotales() - 1);
+                usuario.usoPokeball(tipoPokeball);
             }
 
         }while (intents > 0 && usuario.pokeballsTotales() > 0 && !atrapado);

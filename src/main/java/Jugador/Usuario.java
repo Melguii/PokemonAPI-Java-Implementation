@@ -316,5 +316,8 @@ public class Usuario {
         return pokedex.buscarGimnasio(location);
     }
 
+    public void usoPokeball(String tipoPokeball) {
+        inventario.usoPokeball(tipoPokeball);
+    }
 }
 

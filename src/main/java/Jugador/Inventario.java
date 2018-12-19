@@ -95,4 +95,15 @@ public class Inventario {
             System.out.println();
         }
     }
+
+    public void usoPokeball(String tipoPokeball) {
+        int h = -1;
+        for (Pokeball i :pokeballs) {
+            h++;
+            if (i.getName().equals(tipoPokeball)){
+                pokeballs.remove(h);
+                break;
+            }
+        }
+    }
 }
