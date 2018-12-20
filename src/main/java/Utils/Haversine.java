@@ -1,9 +1,9 @@
-package utils;
+package Utils;
 
 public class Haversine {
-    private static final int EARTH_RADIUS = 6371; // Approx Earth radius in KM
+    private final int EARTH_RADIUS = 6371; // Approx Earth radius in KM
 
-    public static double distance(double startLat, double startLong,
+    public  double distance(double startLat, double startLong,
                                   double endLat, double endLong) {
 
         double dLat  = Math.toRadians((endLat - startLat));
@@ -18,7 +18,7 @@ public class Haversine {
         return EARTH_RADIUS * c;
     }
 
-    public static double haversin(double val) {
+    public double haversin(double val) {
         return Math.pow(Math.sin(val / 2), 2);
     }
 }

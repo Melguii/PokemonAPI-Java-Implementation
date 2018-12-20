@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import Pokemon.Especial.Legendario.Legendario;
 import Pokemon.Especial.Mistico.Mitico;

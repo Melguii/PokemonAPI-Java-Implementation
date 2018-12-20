@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

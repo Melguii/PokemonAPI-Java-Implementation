@@ -3,15 +3,15 @@ import Pokemon.Pokemon;
 
 public class Mitico extends Pokemon {
     private SpecialResearch special_research;
-    private Boolean enCurso = false;
-    private Boolean finalizada = false;
+    private boolean enCurso = false;
+    private boolean finalizada = false;
 
     public void SpecialResearchCompleted(){
         finalizada = true;
     }
 
 
-    public Boolean getEnCurso() {
+    public boolean getEnCurso() {
         return enCurso;
     }
 

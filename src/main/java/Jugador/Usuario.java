@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import Pokemon.Especial.Legendario.Location;
 import Pokemon.Pokemon;
+import Utils.Haversine;
 
 public class Usuario {
 
@@ -241,6 +242,7 @@ public class Usuario {
     }
 
     public float[] peticionHaversine(){
+        Haversine harvensine = new Haversine();
         float[] haversinePosition = new float[2];
         boolean havPoscionado = false;
         float latitud = 0;

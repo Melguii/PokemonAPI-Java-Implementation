@@ -1,20 +1,16 @@
 package Jugador;
 
 import Pokemon.*;
-import Pokemon.Especial.Legendario.Gym;
 import Pokemon.Especial.Legendario.Legendario;
 import Pokemon.Especial.Legendario.Location;
 import Pokemon.Especial.Mistico.Mitico;
 import Pokemon.Especial.Mistico.Quest;
 import Pokemon.Especial.Mistico.SpecialResearch;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
-import utils.CheckType;
-import utils.Haversine;
+import Utils.CheckType;
+import Utils.Haversine;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Pokedex {
     private ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>();
@@ -189,10 +185,11 @@ public class Pokedex {
         //Buscamos el pokémon con el gimnasio más cercano al usuario
         for (Pokemon pokemon : pokedex){
             if (pokemon instanceof Legendario){
+                Haversine haversine = new Haversine();
                 latitud = ((Legendario) pokemon).getGym().getLocation().getLatitude();
                 longitud = ((Legendario) pokemon).getGym().getLocation().getLongitude();
 
-                distance = Haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
+                distance = haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
 
                 if (distance < minDistance){
                     minDistance = distance;

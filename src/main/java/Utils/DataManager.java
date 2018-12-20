@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import Jugador.*;
 import Pokemon.*;
@@ -11,8 +11,6 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.*;
 import java.util.*;
-
-import static java.lang.Math.pow;
 
 import java.util.Scanner;
 
@@ -178,7 +176,6 @@ public class DataManager {
                 break;
 
             case 5:
-
                 Location location = new Location();
 
                 float[] haversine = usuario.peticionHaversine();
@@ -229,6 +226,8 @@ public class DataManager {
                         e.printStackTrace();
 
                     }
+                }else{
+                    System.out.println("Ho sentim però aquest pokémon no existeix (encara)");
                 }
 
                 break;
@@ -443,6 +442,9 @@ public class DataManager {
         String img = pokemon.getFront_default();
         String background_div = getBackgroundColor();
         String background_body = getBackgroundColor();
+        float weight = pokemon.getWeight()/(float)10;
+        int height = pokemon.getHeight();
+        int base = pokemon.getBase_experience();
         writer.write("<html>\n" +
                 "\n" +
                 "<head>\n" +
@@ -477,6 +479,9 @@ public class DataManager {
                 "            style=\"display: block;width: 50%;margin: auto;\">\n" +
                 "        <div style=\"padding: 20px;\">\n" +
                 "            <p>" + description + "</p>\n" +
+                "<p style=\"text-align: center;\"> Weight - " + weight + "kg</p>\n"+
+                "<p style=\"text-align: center;\"> Height - " + (float)height/(float) 10 + "m</p>\n"+
+                "<p style=\"text-align: center;\"> Base Experencie - " + base + "xp</p>\n"+
                 "        </div>\n" +
                 "    </div>\n" +
                 "</body>\n" +
