@@ -13,19 +13,33 @@ import java.net.URLConnection;
 public class PokeApi {
     public static final String  URL = "https://pokeapi.co/api/v2/";
 
+    /**
+     * ??????????
+     * @param args
+     */
     public static void main(String[] args){
         PokeApi p = new PokeApi(135);
         System.out.println(p.getFlavorTextEnglish());
     }
+
     private int id;
     private JsonObject pokemon;
     private JsonObject pokemonSpecies;
 
+    /**
+     * ??????????
+     * @param id
+     */
     public PokeApi(int id){
         pokemon = callToTheServer("pokemon/" + id + "/");
         pokemonSpecies = callToTheServer("pokemon-species/" + id + "/");
     }
 
+    /**
+     * ??????????
+     * @param path
+     * @return
+     */
     private JsonObject callToTheServer(String path){
         URL url;
         JsonParser parser = new JsonParser();
@@ -45,23 +59,43 @@ public class PokeApi {
         return obj;
     }
 
+    /**
+     * Getter de height del pokemon
+     * @return el valor entero de height del pokémon
+     */
     public int getHeight(){
         return pokemon.get("height").getAsInt();
     }
 
+    /**
+     * Geeter del weight pel pokemon
+     * @return devuelve el valor entero del weight del pokémon
+     */
     public int getWeight(){
         return pokemon.get("weight").getAsInt();
     }
 
+    /**
+     * Getter de la base_experience del pokémon
+     * @return devuelve el valor entero de la base_experience del pokémon
+     */
     public int getBaseExperience(){
         return pokemon.get("base_experience").getAsInt();
     }
 
+    /**
+     * Getter del Sprite del pokémon
+     * @return devuelve el Sprite del pokémon en formato de String
+     */
     public String getDefaultSprite(){
         JsonObject Sprites = pokemon.getAsJsonObject("sprites");
         return Sprites.get("front_default").getAsString();
     }
 
+    /**
+     * ??????????
+     * @return
+     */
     public String getFlavorTextEnglish(){
         JsonArray flavorTextEntries = pokemonSpecies.getAsJsonArray("flavor_text_entries");
         JsonObject object = null;
