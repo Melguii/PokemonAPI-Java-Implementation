@@ -15,6 +15,9 @@ import java.util.ArrayList;
 public class Pokedex {
     private ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>();
 
+    /**
+     * ??????????????????????????????????
+     */
     public void showEspecialRecerques() {
 
         System.out.println("Recerques Especials:\n");
@@ -38,6 +41,11 @@ public class Pokedex {
         }
     }
 
+    /**
+     * ??????????????????????????????????????
+     * @param id
+     * @return
+     */
     public Pokemon getPokemonById(int id) {
         for (Pokemon i : this.pokedex) {
             if (i.getId() == id){
@@ -47,22 +55,39 @@ public class Pokedex {
         return null;
     }
 
+    /**
+     * Devuelve toda la pokédex, es decir, todos los pokémon registrados con tdoa su información
+     */
     public ArrayList<Pokemon> getPokedex() {
         return pokedex;
     }
 
-
+    /**
+     * ??????????????????????????????????
+     * @param pokedex2
+     */
     public void setPokedex(ArrayList<Pokemon> pokedex2) {
         this.pokedex.addAll(pokedex2);
     }
 
+    /**
+     * Método que permite buscar por nombre o id un pokémon salvaje, es decir, que no puede ser ni legendario ni mítico.
+     * Si el pokémon que se le pasa por parámetro es como bien se ha esmentado anteriormente un pokemon legendario o
+     * mítico, éste mismo método avisará al usuario que el pokémon buscado no puede ser ninguno de los dos tipos ya esmetados.
+     * Sino hay ningúm problema, y encuentra el pokémon, devolverá el pokémon con toda su información.
+     *
+     * @param parametro: nombre o id del pokémon buscado.
+     * @return devuelve el pokémon y toda su información
+     */
     public Pokemon buscarPokemonSalvaje(String parametro){
         int idBuscado;
         Pokemon pokemonBuscado;
         CheckType ch = new CheckType();
 
+        /* Comprovamos si el valor que se le pasa a la función es el id o nombre mediante su tipo.*/
         boolean numeric = ch.checkType(parametro);
 
+        /*Dependiendo si es id o nombre usaremos una busqueda u otra*/
         if (numeric){
             idBuscado = Integer.parseInt(parametro);
             pokemonBuscado = buscarPokemonPorId(idBuscado);
@@ -70,21 +95,22 @@ public class Pokedex {
             pokemonBuscado = buscarPokemonPorNombre(parametro);
         }
 
-        //Controlamos que no sea un pokemon legenadario ni mitico
+        /*Controlamos que no sea un pokemon legenadario ni mitico*/
         try {
             if (pokemonBuscado.getClass() == Legendario.class){
 
-                System.out.println("Ho sentim, però aquest Pokémon és Llegendari i no apareix salvatge.\n");
-                return null;
+                System.out.println("Ho sentim, però aquest Pokémon és Llegendari i no apareix salvatge.\n");      //Como este método solo busca pokémon salvajes si encuentra un pokémon legendario
+                return null;                                                                                      // y no uno de salvaje informa por pantalla
 
             } else if (pokemonBuscado.getClass() == Mitico.class) {
 
-                System.out.println("Ho sentim, però aquest Pokémon és mític i no apareix salvatge.\n");
-                return null;
+                System.out.println("Ho sentim, però aquest Pokémon és mític i no apareix salvatge.\n");           //Como este método solo busca pokémon salvajes si encuentra un pokémon mítico
+                return null;                                                                                      // y no uno de salvaje informa por pantalla
             }
         }catch (NullPointerException e){
 
-            System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).\n");
+            System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).\n");                         //En caso que no encuentre el pokémon y de error, este devuelve un mensaje conforme no lo ha encontrado
+
             return null;
 
         }
@@ -92,6 +118,14 @@ public class Pokedex {
         return pokemonBuscado;
     }
 
+    /**
+     * Método que compara el id que se le pasa por parámetro con cada uno de los Pokémon. En el momento que un id coincide
+     * devuelve toda la información del pokémon que ha coincidido
+     *
+     * @param id: id int del pokémon
+     * @return devuelve toda la información del pokémon registrado en la pokédex que coincide con la del id pasado por
+     * parámetro
+     */
     public Pokemon buscarPokemonPorId(int id){
         for (Pokemon pokemon : pokedex) {
             if (pokemon.getId() == id){
@@ -103,6 +137,14 @@ public class Pokedex {
         return null;
     }
 
+    /**
+     * Método que compara el nombre que se le pasa por parámetro con cada uno de los Pokémon. En el momento que un nombre coincide
+     * devuelve toda la información del pokémon que ha coincidido
+     *
+     * @param nombre: nombre String del pokémon
+     * @return devuelve toda la información del pokémon registrado en la pokédex que coincide con el nombre pasado por
+     * parámetro
+     */
     public Pokemon buscarPokemonPorNombre(String nombre){
         nombre = nombre.toLowerCase();
 
@@ -116,6 +158,11 @@ public class Pokedex {
         return null;
     }
 
+    /**
+     * ????????????????????????????
+     * @param idPokemon
+     * @return
+     */
     public Pokemon buscarPokemon(String idPokemon) {
         int idBuscado;
         CheckType ch = new CheckType();
@@ -131,6 +178,11 @@ public class Pokedex {
         }
     }
 
+    /**
+     * El pokémon de la pokédex que coincida con el nombre del pokémon pasado por parámetro, devuelve su capture_rate
+     * @param name: nombre del pokémon buscado
+     * @return devuelve el capture_rate del pokémon buscado
+     */
     public double getCaptureRatePokemon(String name) {
         for (Pokemon pokemon: pokedex) {
             if (pokemon.getName().equals(name)){
@@ -140,6 +192,11 @@ public class Pokedex {
         return 0;
     }
 
+    /**
+     * ???????????????????????????????
+     * @param id
+     * @return
+     */
     public int checkSpecialResearchIsCompleted(int id) {
         boolean fight = false;
 
@@ -159,6 +216,10 @@ public class Pokedex {
         return -1;
     }
 
+    /**
+     * ???????????????????????????????
+     * @param id
+     */
     public void setCompletedResearch(int id) {
         for (Pokemon i : pokedex) {
             if (i.getId() == id && i instanceof  Mitico){
@@ -167,6 +228,10 @@ public class Pokedex {
         }
     }
 
+    /**
+     * ???????????????????????????????
+     * @param id
+     */
     public void resetSpecialResearch(int id) {
         for (Pokemon i : pokedex) {
             if (i.getId() == id && i instanceof  Mitico){
@@ -175,6 +240,13 @@ public class Pokedex {
         }
     }
 
+    /**
+     * Este método busca el gimnasio más cercano a la posición que el usuario a introducido por parámetro. Para hacerlo realista
+     * se usa la clase Haversine que calcula la distáncia como si estuviesemos en la tierra.
+     *
+     * @param posicionUsuario: posición de latitud y longitud que ha introducido el usuario
+     * @return devuelve el pokémon legendario con el gimnasio más cercano a la posición introducida
+     */
     public Pokemon buscarGimnasio(Location posicionUsuario){
         Legendario legendario = null;
         float latitud = 0;
