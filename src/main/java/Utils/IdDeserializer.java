@@ -8,6 +8,9 @@ import java.lang.reflect.Type;
 
 public class IdDeserializer implements JsonDeserializer<Pokemon> {
     @Override
+    /**
+     * ??????????????????????????
+     */
     public Pokemon deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
         JsonElement kind = jsonObject.get("kind");
