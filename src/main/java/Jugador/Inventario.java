@@ -23,7 +23,7 @@ public class Inventario {
 
     /**
      * Getter del total de pokeballs
-     * @return
+     * @return el numerototal de pokeballs
      */
     public int getTotalPokeballs() {
         return totalPokeballs;

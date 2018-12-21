@@ -313,25 +313,25 @@ public class Usuario {
     }
 
     /**
-     *???????????????????????????
+     *Comprueba si la SpecialResearch del pokemon dado esta hecha
      * @param id
-     * @return
+     * @return si lucha, el id del pokemon con el que tiene que luchar y si no lucha -1
      */
-    public int  checkSpecialResearchIsCompleted(int id) {
+    public int checkSpecialResearchIsCompleted(int id) {
         return pokedex.checkSpecialResearchIsCompleted(id);
     }
 
     /**
-     * ????????????????????
+     * Obtiene un pokemon por id
      * @param id
-     * @return
+     * @return El pokemon, que busca
      */
     public Pokemon getPokemonById(int id) {
         return pokedex.getPokemonById(id);
     }
 
     /**
-     * ????????????????????
+     * el usuario dice a la pokedex que ha terminado la SpecialResearch
      * @param id
      */
     public void setCompletedResearch(int id) {
@@ -339,7 +339,7 @@ public class Usuario {
     }
 
     /**
-     * ?????????????????????
+     * Resetea la SpecialResearch
      * @param id
      */
     public void resetSpecialResearch(int id) {
@@ -356,7 +356,7 @@ public class Usuario {
     }
 
     /**
-     * ?????????
+     * El usuario usa una pokeball y se la quita al inventario
      * @param tipoPokeball
      */
     public void usoPokeball(String tipoPokeball) {

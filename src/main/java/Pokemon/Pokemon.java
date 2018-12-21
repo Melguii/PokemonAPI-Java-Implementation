@@ -1,8 +1,5 @@
 package Pokemon;
 
-import Pokemon.Especial.Legendario.Gym;
-import Pokemon.Especial.Legendario.Legendario;
-
 public  abstract class Pokemon {
 
 

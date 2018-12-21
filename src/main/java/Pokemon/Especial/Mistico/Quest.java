@@ -11,7 +11,7 @@ public class Quest {
 
     /**
      * Devuelde el porcentaje de una quest.
-     * @return percentaje
+     * @return el porcentaje de completado de la quest
      */
     public int getPercentaje() {
         return percentaje;
@@ -19,7 +19,7 @@ public class Quest {
 
     /**
      * Devuelve cuantos pokemons hemos capturado de ese tipo
-     * @return obtenidos
+     * @return cuantos pokemons se han obtenido en esta quest
      */
     public int getObtenidos() {
         return obtenidos;
@@ -50,7 +50,7 @@ public class Quest {
 
     /**
      * Obtiene el pokemon que hay que capturar
-     * @return target
+     * @return id del pokemon a capturar
      */
     public int getTarget() {
         return target;
@@ -66,7 +66,7 @@ public class Quest {
 
     /**
      * Getter de la cantidad de un pokemon a capturar
-     * @return
+     * @return cantidad de pokemons a capturar
      */
     public int getQuantity() {
         return quantity;
