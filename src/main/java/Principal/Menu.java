@@ -36,7 +36,10 @@ public class Menu {
         this.opcion =  sc.nextInt();
     }
 
-
+    /**
+     * Funcion que comprueba que la opción escrita por el usuario sea correcta
+     * @return boolean
+     */
     public boolean opcionValida(){
         if ( !(opcion >= 1 && opcion <= 9)){
             System.out.println("Error, opció incorrecte");
@@ -44,10 +47,18 @@ public class Menu {
         return opcion >= 1 && opcion <= 9;
     }
 
+    /**
+     * Función que comprueva si el usuario ha pulsado la opción de salida
+     * @return si opción es igual a 9
+     */
     public boolean salir() {
         return opcion == 9;
     }
 
+    /**
+     * Función que devuelve la opción seleccionada por el usuario
+     * @return la opción seleccionada
+     */
     public int getOpcion() {
         return this.opcion;
     }
