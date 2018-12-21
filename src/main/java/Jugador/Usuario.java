@@ -2,7 +2,6 @@ package Jugador;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 import Pokemon.Especial.Legendario.Location;
@@ -17,25 +16,45 @@ public class Usuario {
     private Pc pc = new Pc();
     private Pokedex pokedex = new Pokedex();
 
+    /**
+     * Obtiene las SpecialResearch
+     */
     public void getEspecialRecerques() {
         pokedex.showEspecialRecerques();
     }
 
-
+    /**
+     * Busca un pokemon en la pokedex
+     * @param parametro puede ser una id o un nombre.
+     * @return El pokemon que busca
+     */
     private Pokemon buscarPokemonSalvaje(String parametro) {
        return pokedex.buscarPokemonSalvaje(parametro);
     }
 
+    /**
+     * Obtiene la pokedex entera
+     * @return Pokedex
+     */
     public Pokedex getPokedex() {
         return pokedex;
     }
 
+    /**
+     * Setteer de la pokedex
+     * @param pokedex2
+     */
     public void setPokedex(ArrayList<Pokemon> pokedex2) {
         this.pokedex.setPokedex(pokedex2);
     }
 
 
     //Constructor
+
+    /**
+     * Constructor del usuario que pone las monedas 100 y Settear el inventario.
+     * @param firstPokeball
+     */
     public Usuario(Pokeball firstPokeball) {
         this.monedas = 1000;
         this.inventario = new Inventario(firstPokeball);
@@ -196,7 +215,7 @@ public class Usuario {
 
     /**
      * Obtenemos cuantas pokeballs le quedan al usuario
-     * @return
+     * @return numero de pokeballs totales
      */
     public int pokeballsTotales(){
         return inventario.getTotalPokeballs();
