@@ -241,6 +241,10 @@ public class Usuario {
         return false;
     }
 
+    /**
+     * Este método pide al usuario la latitud y longitud a la que se encuentra
+     * @return la posición del usuario
+     */
     public float[] peticionHaversine(){
         Haversine harvensine = new Haversine();
         float[] haversinePosition = new float[2];
@@ -290,34 +294,71 @@ public class Usuario {
         return haversinePosition;
     }
 
+    /**
+     * Getter de pokemons
+     * @return Devuelve la lista de los pokémon capturados por el usuario
+     */
     public List<Pokemon> getPokemonsCapturados() {
         return  pc.getPokemonsCapturados();
     }
 
+    /**
+     * Métododo que consulta el capture_rate de un pokemon
+     *
+     * @param name nombre del pokémon
+     * @return el valor de capture_rate
+     */
     public double consultaCaptureRate(String name) {
         return pokedex.getCaptureRatePokemon(name);
     }
 
-    public int checkSpecialResearchIsCompleted(int id) {
+    /**
+     *???????????????????????????
+     * @param id
+     * @return
+     */
+    public int  checkSpecialResearchIsCompleted(int id) {
         return pokedex.checkSpecialResearchIsCompleted(id);
     }
 
+    /**
+     * ????????????????????
+     * @param id
+     * @return
+     */
     public Pokemon getPokemonById(int id) {
         return pokedex.getPokemonById(id);
     }
 
+    /**
+     * ????????????????????
+     * @param id
+     */
     public void setCompletedResearch(int id) {
         pokedex.setCompletedResearch(id);
     }
 
+    /**
+     * ?????????????????????
+     * @param id
+     */
     public void resetSpecialResearch(int id) {
         pokedex.resetSpecialResearch(id);
     }
 
+    /**
+     *Devuelve el pokémon legendario con el gimnasio más cercano a la posición introducida por parámetro
+     * @param location coordenadas de posición
+     * @return el pokémon que se encuentra más cercano a esa posición
+     */
     public Pokemon getPokemonLegendario(Location location){
         return pokedex.buscarGimnasio(location);
     }
 
+    /**
+     * ?????????
+     * @param tipoPokeball
+     */
     public void usoPokeball(String tipoPokeball) {
         inventario.usoPokeball(tipoPokeball);
     }
