@@ -205,7 +205,7 @@ public class DataManager {
                     setMoreInformactionOfPokemon(i);
                 }
                 try {
-                    WriteFileCapturados(pokemonsCapturados);
+                    writeFileCapturados(pokemonsCapturados);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -219,7 +219,7 @@ public class DataManager {
                     setMoreInformactionOfPokemon(pokemon);
                     try {
 
-                        WriteFileInformation(pokemon);
+                        writeFileInformation(pokemon);
 
                     } catch (IOException e) {
 
@@ -240,8 +240,8 @@ public class DataManager {
         }
     }
 
-    private void WriteFileCapturados(List<Pokemon> pokemonsCapturados) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter( "Pokemons_capturats.html"));
+    private void writeFileCapturados(List<Pokemon> pokemonsCapturados) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter( "htmls/Pokemons_capturats.html"));
         int nPokemons = pokemonsCapturados.size();
         String backgorund = getBackgroundColor();
         writer.write("<html>\n" +
@@ -433,9 +433,9 @@ public class DataManager {
     }
 
 
-    private void WriteFileInformation(Pokemon pokemon) throws IOException {
+    private void writeFileInformation(Pokemon pokemon) throws IOException {
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(pokemon.getName() + ".html"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("htmls/" + pokemon.getName() + ".html"));
         String title = pokemon.getName().toUpperCase();
         String h1 = title  + "(" + pokemon.getId() + ")";
         String description = pokemon.getFlavor_text();

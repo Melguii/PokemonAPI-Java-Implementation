@@ -189,7 +189,7 @@ public class Pokedex {
                 latitud = ((Legendario) pokemon).getGym().getLocation().getLatitude();
                 longitud = ((Legendario) pokemon).getGym().getLocation().getLongitude();
 
-                distance = haversine.distance(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
+                distance = haversine.distanceHarven(posicionUsuario.getLatitude(), posicionUsuario.getLongitude(), latitud, longitud);
 
                 if (distance < minDistance){
                     minDistance = distance;
