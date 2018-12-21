@@ -28,12 +28,14 @@ public class DataManager {
     //Getters
 
     /**
-     * Carga la infomacion del Json de pokebolls en la tienda
+     * Carga la infomación del Json de pokebolls en la tienda
      */
     public void loadDataPokeballs() {
         Gson gson = new Gson();
         JsonReader reader;
         Pokeball[] pokeballs;
+
+        /*Controlamos que el archivo existe en la carpeta que accedemos*/
         try {
             reader = new JsonReader(new FileReader(PATH + FILE1));
             pokeballs = gson.fromJson(reader, Pokeball[].class);
@@ -44,7 +46,7 @@ public class DataManager {
     }
 
     /**
-     * Carga la informacion del usuario
+     * Carga la información del usuario
      */
     public void loadUser() {
         usuario = new Usuario(tienda.getFirstPokeball());
@@ -52,13 +54,14 @@ public class DataManager {
 
 
     /**
-     * Ahora cargamos la informacion de los todos los pokemons.
+     * Ahora cargamos la información de los todos los pokemón.
      */
     public void loadDataPokedex() {
         Pokemon[] pokemonsAux = loadPokemon(FILE2);
         ArrayList<Pokemon> pokedex = new ArrayList<>(Arrays.asList(pokemonsAux));
         pokemonsAux = loadPokemon(FILE3);
         int i = 0;
+
         for (Pokemon pokemonActual : pokedex) {
             for (Pokemon pokemonAuxActual : pokemonsAux) {
                 if (pokemonActual.getId() == pokemonAuxActual.getId()) {
@@ -76,15 +79,16 @@ public class DataManager {
     //Metodos
 
     /**
-     * Lee la informacion de los pokemons
+     * Lee la información de los pokémon
      *
      * @param file: El archivo a leer
-     * @return Array de pokemons
+     * @return Array de pokémon
      */
     private Pokemon[] loadPokemon(String file) {
         Pokemon[] pokemons;
         JsonReader reader;
 
+        /*Controlamos que el archivo existe en la carpeta que accedemos*/
         try {
             Gson gson = new GsonBuilder().registerTypeAdapter(Pokemon.class, new IdDeserializer()).create();
             reader = new JsonReader(new FileReader(PATH + file));
@@ -97,20 +101,23 @@ public class DataManager {
     }
 
 
-
+    /**
+     * Método con cada uno de los métodos principales para cada opción
+     * @param opcion la opción que se quiere ejecutar
+     */
     public void seleccionarOpcio(int opcion) {
 
         switch (opcion) {
 
+            /* Opción que permite comprar monedas al Usuario */
             case 1:
 
-                //Monedas
                 usuario.comprarMonedas();
                 break;
 
+            /* Opción que permite comprar objetos al Usuario */
             case 2:
 
-                //Comprar Objetos
                 System.out.println("Teniu " + usuario.getMonedas() +  " monedes.\n");
                 tienda.mostrarObjetos();
 
@@ -120,13 +127,15 @@ public class DataManager {
 
                 break;
 
+            /* Opción que permite consultar el inventario del Usuario */
             case 3:
 
-                //Consultar Inventario
                 usuario.consultarInventario();
 
                 break;
 
+            /* Opción que permite capturar un pokémon salvaje. Si se completa una misión, aparecerá en consecuéncia el pokémon
+             * mítico que coincida con esa misión completada */
             case 4:
                 boolean miticalIsOn = false;
                 int miticalId = -1;
@@ -175,6 +184,8 @@ public class DataManager {
 
                 break;
 
+            /* Opción que permite hacer una Raid, es decir, capturar el pokémon Legendario más cercano a la posición que
+             * ha introducido el Usuario */
             case 5:
                 Location location = new Location();
 
@@ -195,10 +206,12 @@ public class DataManager {
 
                 break;
 
+            /* Opción  que permite al Usuario si tiene algun misión activa y por que porcentaje va */
             case 6:
                 usuario.getEspecialRecerques();
                 break;
 
+            /* Opción que permite al Usuario consultar todos los pokémon que ha capturado y cuantos de cada uno */
             case 7:
                 List<Pokemon> pokemonsCapturados = usuario.getPokemonsCapturados();
                 for (Pokemon i :pokemonsCapturados) {
@@ -211,6 +224,7 @@ public class DataManager {
                 }
                 break;
 
+            /* Opción que permite al Usuario consultar la información detallada de cualquier pokémon */
             case 8:
 
                 Pokemon pokemon = usuario.peticionInformacionPokemon();
@@ -232,6 +246,7 @@ public class DataManager {
 
                 break;
 
+            /* Opción que permite al Usuario salir del juego */
             case 9:
                 System.out.println("Ens veiem!");
 
@@ -240,6 +255,11 @@ public class DataManager {
         }
     }
 
+    /**
+     * ????????????????????????????????????
+     * @param pokemonsCapturados
+     * @throws IOException
+     */
     private void writeFileCapturados(List<Pokemon> pokemonsCapturados) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter( "htmls/Pokemons_capturats.html"));
         int nPokemons = pokemonsCapturados.size();
@@ -320,6 +340,12 @@ public class DataManager {
         writer.close();
     }
 
+    /**
+     * Método que contiene toda la lógica de captura de cualquir tipo de pokémon
+     *
+     * @param pokemon el pokémon que se quiere capturar
+     * @return si ha capturado al pokémon o no
+     */
     private boolean sistemaCaptura(Pokemon pokemon){
         boolean capturado;
 
@@ -338,6 +364,11 @@ public class DataManager {
         return capturado;
     }
 
+    /**
+     * ???????????????????????????
+     * @param pokemon
+     * @return
+     */
     private boolean resultadoCapturaMi(Pokemon pokemon){
         boolean pokeballExitente = false;
         boolean atrapado = false;
@@ -373,8 +404,15 @@ public class DataManager {
         return  atrapado;
     }
 
+    /**
+     * Este método es el encargado de calcular mediante unas fórmulas una probabilidad de captura que lo comparará con
+     * un número random. Si la probabilidad coincide o es más gran que el número random, el pokémon será capturado.
+     *
+     * @param pokemon: pokémon ha capturar
+     * @return si lo ha capturado o no
+     */
     private boolean resultadoCaptura(Pokemon pokemon){
-        double pc;                                              //Probabilidad de Captura
+        double pc;                                                  //Probabilidad de Captura
         double pb;                                                  //Pokeball Capture Rate
         boolean atrapado = false;
         boolean tieneTipoPokeball;
@@ -386,6 +424,7 @@ public class DataManager {
         do{
             System.out.println("Queden "+ usuario.pokeballsTotales() + " Pokéballs i "+ intents +"/5 intents. Quin tipus de Pokéball vol fer servir?");
 
+            /*Pedimos la pokeball a lanzar y comprovamos que exista*/
             do {
                 Scanner scPokeball = new Scanner(System.in);
                 tipoPokeball = scPokeball.nextLine();
@@ -398,7 +437,7 @@ public class DataManager {
             pb = pokeballCaptureRate(tipoPokeball);
             pc = pokemon.captureEcuation(pb);
 
-
+            /* Una vez calculado todos los valores, comprovamos si la probabilidad de captura es más grande que el número random */
             if (pc >= random){
                 atrapado = true;
 
@@ -411,6 +450,7 @@ public class DataManager {
 
         }while (intents > 0 && usuario.pokeballsTotales() > 0 && !atrapado);
 
+        /* En caso que no le queden intentos o pokeball al usuario, se le informará por pantalla */
         if (intents == 0){
             System.out.println("El " + pokemon.getName() + " escapat...\n");
 
@@ -422,6 +462,13 @@ public class DataManager {
         return atrapado;
     }
 
+    /**
+     * Con el nombre de la pokeball que se le pasa por parámetro, si coincide con algunas de las pokeball que existen, devolvemos
+     * su ratio de captura
+     *
+     * @param nombrePokeball: nombre de la pokeball que buscamos su capture_rate
+     * @return devolvemos el capture_rate de la pokeball
+     */
     private int pokeballCaptureRate(String nombrePokeball){
         for (Pokeball pokeball: tienda.getPokeballs()) {
             if (pokeball.getName().equals(nombrePokeball)){
@@ -432,7 +479,11 @@ public class DataManager {
         return 0;
     }
 
-
+    /**
+     * ??????????????????????
+     * @param pokemon
+     * @throws IOException
+     */
     private void writeFileInformation(Pokemon pokemon) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("htmls/" + pokemon.getName() + ".html"));
@@ -490,6 +541,10 @@ public class DataManager {
         writer.close();
     }
 
+    /**
+     * ????????????????????????
+     * @return
+     */
     private String getBackgroundColor() {
         int color1 = (int) ((Math.random() * ((255 - 180) + 1)) + 180);
         int color2 = (int) ((Math.random() * ((255 - 180) + 1)) + 180);
@@ -497,6 +552,10 @@ public class DataManager {
         return  "background-color:rgb(" + color1 + ", " +color2  + ", " + color3  +")";
     }
 
+    /**
+     * ????????????????????????????????????????
+     * @param pokemon
+     */
     private void setMoreInformactionOfPokemon(Pokemon pokemon) {
         if (pokemon.getFlavor_text() == null){
             PokeApi pokeApi = new PokeApi(pokemon.getId());
