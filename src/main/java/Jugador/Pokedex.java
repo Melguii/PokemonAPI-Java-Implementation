@@ -74,17 +74,17 @@ public class Pokedex {
         try {
             if (pokemonBuscado.getClass() == Legendario.class){
 
-                System.out.println("Ho sentim, però aquest Pokémon és Llegendari i no apareix salvatge.\n");
+                System.out.println("Ho sentim, pero? aquest Poke?mon e?s Llegendari i no apareix salvatge.\n");
                 return null;
 
             } else if (pokemonBuscado.getClass() == Mitico.class) {
 
-                System.out.println("Ho sentim, però aquest Pokémon és mític i no apareix salvatge.\n");
+                System.out.println("Ho sentim, pero? aquest Poke?mon e?s mi?tic i no apareix salvatge.\n");
                 return null;
             }
         }catch (NullPointerException e){
 
-            System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).\n");
+            System.out.println("Ho sentim, pero? aquest Poke?mon no existeix (encara).\n");
             return null;
 
         }
@@ -198,7 +198,7 @@ public class Pokedex {
             }
         }
         if (legendario != null){
-            System.out.println("Gimnàs més proper: " + legendario.getGym().getName() +". Començant raid...");
+            System.out.println("Gimna?s me?s proper: " + legendario.getGym().getName() +". Comenc?ant raid...");
         }
 
         return legendario;
