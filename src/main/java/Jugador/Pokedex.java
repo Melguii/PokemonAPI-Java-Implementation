@@ -44,7 +44,7 @@ public class Pokedex {
     /**
      * Devuele un pokemon segun una id
      * @param id
-     * @return
+     * @return el pokemon a buscar
      */
     public Pokemon getPokemonById(int id) {
         for (Pokemon i : this.pokedex) {
@@ -161,7 +161,7 @@ public class Pokedex {
     /**
      * Busca un pokemon independiente si es un nombre o una id
      * @param idPokemon
-     * @return
+     * @return Pokemon a buscar
      */
     public Pokemon buscarPokemon(String idPokemon) {
         int idBuscado;
@@ -195,7 +195,7 @@ public class Pokedex {
     /**
      * Comprueba que la Research ha sido completado o no, si ha sido completada devuelve el id del pokemon con el que tiene que luchar
      * @param id
-     * @return id del pokemon a luchar, o -1
+     * @return id del pokemon a luchar, o -1 si no hay que luchar
      */
     public int checkSpecialResearchIsCompleted(int id) {
         boolean fight = false;
