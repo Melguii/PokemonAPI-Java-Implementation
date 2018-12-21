@@ -1,5 +1,3 @@
-package Principal;
-
 import Utils.DataManager;
 import java.io.FileNotFoundException;
 
