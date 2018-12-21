@@ -7,6 +7,10 @@ import java.util.Scanner;
 public class Tienda {
     private Pokeball[] pokeballs;
 
+    /**
+     *
+     * @return
+     */
     public Pokeball[] getPokeballs() {
         return pokeballs;
     }
