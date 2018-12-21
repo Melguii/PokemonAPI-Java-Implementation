@@ -10,26 +10,44 @@ public class Mitico extends Pokemon {
         finalizada = true;
     }
 
-
+    /**
+     * Getter de si la SpecialResearch esta en curso o no
+     * @return si la SpecialResearch esta en curso o no
+     */
     public boolean getEnCurso() {
         return enCurso;
     }
 
+    /**
+     * Setter de la SpecialResearch para saber si esta en curso o no
+     */
     private void setEnCurso() {
         this.enCurso = true;
     }
 
+    /**
+     * Obtiene una SpecialResearch
+     * @return la SpecialResearch del pokemon
+     */
     public SpecialResearch getSpecial_Research() {
         System.out.println("\t- "+special_research.getName() + " (" + getName() + "):");
         return special_research;
     }
 
+    /**
+     * Pone la SpecialResearch a su estado incial
+     */
     public  void ResetSpecialResearch(){
         special_research.reset();
         enCurso = false;
         finalizada = false;
     };
 
+    /**
+     * Comprueba si la SpecialResearch esta finalizada o no
+     * @param id
+     * @return True si esta finalizada, false si no lo esta
+     */
     public boolean checkSpecialResearch(int id){
         if (!finalizada){
             int x = special_research.checkSpecialResearch(id);
@@ -45,6 +63,10 @@ public class Mitico extends Pokemon {
         }
     }
 
+    /**
+     * Setter de una SpecialResearch
+     * @param special_research
+     */
     public void setSpecial_Research(SpecialResearch special_research) {
         this.special_research = special_research;
     }

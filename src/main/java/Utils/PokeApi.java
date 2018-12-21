@@ -12,33 +12,24 @@ import java.net.URLConnection;
 
 public class PokeApi {
     public static final String  URL = "https://pokeapi.co/api/v2/";
-
-    /**
-     * ??????????
-     * @param args
-     */
-    public static void main(String[] args){
-        PokeApi p = new PokeApi(135);
-        System.out.println(p.getFlavorTextEnglish());
-    }
-
     private int id;
     private JsonObject pokemon;
     private JsonObject pokemonSpecies;
 
     /**
-     * ??????????
+     * Constructor dado un ID llama al server para obtener los documentos
      * @param id
      */
     public PokeApi(int id){
+        this.id = id;
         pokemon = callToTheServer("pokemon/" + id + "/");
         pokemonSpecies = callToTheServer("pokemon-species/" + id + "/");
     }
 
     /**
-     * ??????????
+     * Llamada al servidor para cualquier url
      * @param path
-     * @return
+     * @return documento obtenido de la llamada
      */
     private JsonObject callToTheServer(String path){
         URL url;
@@ -93,8 +84,8 @@ public class PokeApi {
     }
 
     /**
-     * ??????????
-     * @return
+     * Obtiene la descripcion del pokemon del Jsonobject
+     * @return la descripccion.
      */
     public String getFlavorTextEnglish(){
         JsonArray flavorTextEntries = pokemonSpecies.getAsJsonArray("flavor_text_entries");

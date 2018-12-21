@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 public class IdDeserializer implements JsonDeserializer<Pokemon> {
     @Override
     /**
-     * ??????????????????????????
+     * Crea un JsonObject con el Json y decide donde guardar la informacion basado en el kind del pokemon
      */
     public Pokemon deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
