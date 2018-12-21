@@ -146,7 +146,7 @@ public  abstract class Pokemon {
 
     /**
      * Método abstracto (polimorfismo) implementado dentro de los diferentes tipos de pokémon. Este devuelve la probabilidad
-     * de captura del pokémon
+     * de captura del pokémon.
      *
      * @param pb: capture_rate de la pokeball
      * @return Devuelve la probabilida de captura del pokémon
