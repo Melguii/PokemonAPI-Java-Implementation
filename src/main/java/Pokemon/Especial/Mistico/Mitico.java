@@ -49,6 +49,11 @@ public class Mitico extends Pokemon {
         this.special_research = special_research;
     }
 
+    /**
+     * Método aplicado en un polimorfismo que calcula la probabilidad de captura de un pokemon mítico
+     * @param pb: el capture_rate de la pokeball
+     * @return el valor que define la probabilidad de captura
+     */
     @Override
     public double captureEcuation(double pb) {
         return (pb/pb)+(getCapture_rate()/getCapture_rate())/2;
