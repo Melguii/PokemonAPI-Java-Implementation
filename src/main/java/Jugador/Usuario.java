@@ -248,7 +248,7 @@ public class Usuario {
         //Comprovamos si la pokeball existe para indicar que no le quedan de ese tipo de pokeball
         for (Pokeball pokeball : pokeballsExistentes){
             if (pokeball.getName().equals(tipoPokeball)){
-                System.out.println("Compte! No et queden pokeballs de tipus " + tipoPokeball +"intenta-ho de nou amb d'altres que tinguis a l'inventari");
+                System.out.println("Compte! No et queden pokeballs de tipus " + tipoPokeball +" intenta-ho de nou amb d'altres que tinguis a l'inventari");
 
                 //Devolvemos true porque realmente, si que le quedan pokeballs para capturar al pokemon
                 return true;
